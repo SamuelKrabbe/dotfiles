@@ -1,0 +1,5 @@
+require("config.options")
+require("config.keymaps")
+require("config.builtin-terminal")
+require("config.tabs")
+require("config.lazy")

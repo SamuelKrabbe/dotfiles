@@ -1,7 +1,7 @@
 return {
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
 
     -- Allows extending the `spec` table across multiple files
     opts_extend = { "spec" },

@@ -26,7 +26,14 @@ vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" 
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left (reselect)" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right (reselect)" })
-vim.keymap.set({ "n", "i", "v" }, "<C-s>", ":wa<CR>", { desc = "Save all files" })
+vim.keymap.set({ "n", "i", "v" }, "<C-s>", function()
+    local mode = vim.api.nvim_get_mode().mode
+    if mode == "i" then
+        vim.cmd("stopinsert")
+    end
+    vim.cmd("wa")
+    vim.notify("All files saved!", vim.log.levels.INFO)
+end, { desc = "Save all files" })
 
 -- ======================================================================
 -- Windows & Splits
@@ -73,5 +80,23 @@ vim.keymap.set("n", "<C-l>", ":Lazy sync<CR>", { desc = "Sync plugins" })
 -- ======================================================================
 -- Theme Management
 -- ======================================================================
-vim.keymap.set("n", "<leader>tt", ":ToggleTheme<CR>", { desc = "Toggle theme" })
+vim.keymap.set("n", "<leader>T", ":ToggleTheme<CR>", { desc = "Toggle theme" })
+
+-- ======================================================================
+-- Built-in Terminal
+-- ======================================================================
+local terminal = require("config.builtin-terminal")
+vim.keymap.set("n", "<leader>t", terminal.FloatingTerminal, {
+  noremap = true,
+  silent = true,
+  desc = "Toggle floating terminal",
+})
+
+vim.keymap.set("t", "<Esc>", function()
+  local st = terminal.terminal_state
+  if st.is_open then
+    vim.api.nvim_win_close(st.win, false)
+    st.is_open = false
+  end
+end, { noremap = true, silent = true, desc = "Close floating terminal" })
 

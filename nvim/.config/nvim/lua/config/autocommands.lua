@@ -1,3 +1,5 @@
+local theme = require("config.theme")
+
 local augroup = vim.api.nvim_create_augroup("UserConfig", {})
 
 -- Highlight yanked text
@@ -76,4 +78,20 @@ vim.api.nvim_create_autocmd("BufWritePre", {
       vim.fn.mkdir(dir, 'p')
     end
   end,
+})
+
+-- Theme toggle command
+vim.api.nvim_create_user_command("ToggleTheme", function()
+    if (vim.g.colors_name or ""):find("tokyonight") then
+        theme.set_theme("catppuccin")
+    else
+        theme.set_theme("tokyonight")
+    end
+end, {})
+
+-- Apply initial theme after startup
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    theme.set_theme(theme.current_theme)
+  end
 })

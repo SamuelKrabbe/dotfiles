@@ -1,11 +1,11 @@
+local theme = require("config.theme")
+
 return {
     {
-        'nvim-lualine/lualine.nvim',
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
-            theme = 'tokyonight',
-        }
-    }
+            theme = theme.get_lualine_theme(),
+        },
+    },
 }

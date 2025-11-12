@@ -2,3 +2,4 @@ alacritty/.config/alacritty/themes/
 zsh/.oh-my-zsh/custom/plugins/
 zsh/.oh-my-zsh/custom/themes/
 zsh/.oh-my-zsh/custom/example.zsh
+git/.gitconfig

@@ -8,10 +8,11 @@ git pull origin main
 # Add all changes (but respect .gitignore)
 git add -A
 
-if [ -z "$1" ]; then
-    read -rp "Enter commit message: " commit_message
+# Check for -m option
+if [[ "$1" == "-m" && -n "$2" ]]; then
+    commit_message="$2"
 else
-    commit_message="$1"
+    read -rp "Enter commit message: " commit_message
 fi
 
 git commit -m "$commit_message"

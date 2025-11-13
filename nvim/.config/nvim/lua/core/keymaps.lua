@@ -100,3 +100,15 @@ vim.keymap.set("t", "<Esc>", function()
   end
 end, { noremap = true, silent = true, desc = "Close floating terminal" })
 
+-- ======================================================================
+-- Quickfix & Location List Navigation
+-- ======================================================================
+
+-- Quickfix list navigation
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix item" })
+
+-- Location list navigation
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next location list item" })
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous location list item" })
+

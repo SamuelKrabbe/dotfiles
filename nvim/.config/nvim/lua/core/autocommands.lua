@@ -1,8 +1,13 @@
 local theme = require("core.theme")
 
+-- Create a dedicated augroup for all user autocommands
 local augroup = vim.api.nvim_create_augroup("UserConfig", {})
 
--- Highlight yanked text
+-- ======================================================================
+-- General Editor Behavior
+-- ======================================================================
+
+-- Highlight text briefly after yanking it
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup,
   callback = function()
@@ -10,7 +15,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- Return to last edit position when opening files
+-- Restore last cursor position when reopening a file
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup,
   callback = function()
@@ -22,7 +27,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- Set filetype-specific settings
+-- ======================================================================
+-- Filetype Settings
+-- ======================================================================
+
+-- Use 4 spaces for Lua and Python
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup,
   pattern = { "lua", "python" },
@@ -32,6 +41,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Use 2 spaces for web development files
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup,
   pattern = { "javascript", "typescript", "json", "html", "css" },
@@ -41,7 +51,11 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Auto-close terminal when process exits
+-- ======================================================================
+-- Terminal Behavior
+-- ======================================================================
+
+-- Automatically close terminal buffer when the process exits successfully
 vim.api.nvim_create_autocmd("TermClose", {
   group = augroup,
   callback = function()
@@ -51,7 +65,7 @@ vim.api.nvim_create_autocmd("TermClose", {
   end,
 })
 
--- Disable line numbers in terminal
+-- Disable UI elements inside terminal buffers for a cleaner look
 vim.api.nvim_create_autocmd("TermOpen", {
   group = augroup,
   callback = function()
@@ -61,7 +75,11 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
--- Auto-resize splits when window is resized
+-- ======================================================================
+-- Window Management
+-- ======================================================================
+
+-- Equalize split sizes when the Neovim window is resized
 vim.api.nvim_create_autocmd("VimResized", {
   group = augroup,
   callback = function()
@@ -69,29 +87,69 @@ vim.api.nvim_create_autocmd("VimResized", {
   end,
 })
 
--- Create directories when saving files
+-- ======================================================================
+-- File Management
+-- ======================================================================
+
+-- Automatically create missing directories when saving a file
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = augroup,
   callback = function()
-    local dir = vim.fn.expand('<afile>:p:h')
+    local dir = vim.fn.expand("<afile>:p:h")
     if vim.fn.isdirectory(dir) == 0 then
-      vim.fn.mkdir(dir, 'p')
+      vim.fn.mkdir(dir, "p")
     end
   end,
 })
 
--- Theme toggle command
+-- ======================================================================
+-- Theme Management
+-- ======================================================================
+
+-- Command to toggle between predefined themes
 vim.api.nvim_create_user_command("ToggleTheme", function()
-    if (vim.g.colors_name or ""):find("tokyonight") then
-        theme.set_theme("catppuccin")
-    else
-        theme.set_theme("tokyonight")
-    end
+  if (vim.g.colors_name or ""):find("tokyonight") then
+    theme.set_theme("catppuccin")
+  else
+    theme.set_theme("tokyonight")
+  end
 end, {})
 
--- Apply initial theme after startup
+-- Apply current theme on startup
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     theme.set_theme(theme.current_theme)
-  end
+  end,
+})
+
+-- ======================================================================
+-- Quickfix Handling
+-- ======================================================================
+
+-- Automatically open the quickfix window after running :make or :grep if results exist
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+  pattern = { "make", "grep", "grepadd" },
+  callback = function()
+    if not vim.tbl_isempty(vim.fn.getqflist()) then
+      vim.cmd("copen")
+      vim.cmd("wincmd p") -- return to previous window
+    end
+  end,
+})
+
+-- Close the quickfix window automatically if it's empty
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+  callback = function()
+    if vim.tbl_isempty(vim.fn.getqflist()) then
+      pcall(vim.cmd, "cclose")
+    end
+  end,
+})
+
+-- Auto-close quickfix window when leaving it
+vim.api.nvim_create_autocmd("BufLeave", {
+  pattern = "quickfix",
+  callback = function()
+    vim.cmd("cclose")
+  end,
 })

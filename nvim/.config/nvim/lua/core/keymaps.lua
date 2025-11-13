@@ -43,8 +43,8 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
-vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical split" })
-vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Horizontal split" })
+vim.keymap.set("n", "<leader>|", ":vsplit<CR>", { desc = "Vertical split" })
+vim.keymap.set("n", "<leader>-", ":split<CR>", { desc = "Horizontal split" })
 
 vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase height" })
 vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease height" })
@@ -75,7 +75,7 @@ vim.keymap.set("n", "<leader><leader>", ":source<CR>", { desc = "Source current 
 -- ======================================================================
 -- Plugin Management
 -- ======================================================================
-vim.keymap.set("n", "<leader>l", ":Lazy sync<CR>", { desc = "Sync plugins" })
+vim.keymap.set("n", "<leader>ls", ":Lazy sync<CR>", { desc = "Sync plugins" })
 
 -- ======================================================================
 -- Theme Management
@@ -104,11 +104,11 @@ end, { noremap = true, silent = true, desc = "Close floating terminal" })
 -- Quickfix & Location List Navigation
 -- ======================================================================
 
--- Quickfix list navigation
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix item" })
+-- Quickfix navigation
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
+vim.keymap.set("n", "[q", "<cmd>cprev<CR>zz", { desc = "Previous quickfix item" })
 
 -- Location list navigation
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next location list item" })
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous location list item" })
+vim.keymap.set("n", "]l", "<cmd>lnext<CR>zz", { desc = "Next location list item" })
+vim.keymap.set("n", "[l", "<cmd>lprev<CR>zz", { desc = "Previous location list item" })
 

@@ -4,8 +4,8 @@ return {
 	},
 	{ -- Show historical versions of the file locally
 		"mbbill/undotree",
-        config = function() 
-            vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+        config = function()
+            vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = "Toggle undotree" } )
         end
 	},
 	{ -- Show CSS Colors

@@ -77,7 +77,7 @@ return {
 
     -- Numbers 1–9 to jump to Harpoon slots
     for i = 1, 9 do
-      vim.keymap.set("n", "<leader>" .. i, function()
+      vim.keymap.set("n", "<leader>h" .. i, function()
         harpoon:list():select(i)
       end, { desc = "Harpoon to file " .. i })
     end

@@ -1,5 +1,4 @@
 require("core.autocommands")
-require("core.builtin-terminal")
 require("core.keymaps")
 require("core.options")
 require("core.tabs")

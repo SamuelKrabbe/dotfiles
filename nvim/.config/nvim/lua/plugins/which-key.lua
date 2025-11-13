@@ -16,11 +16,13 @@ return {
                 { "<leader>c",     group = "code" },
                 { "<leader>d",     group = "debug" },
                 { "<leader>f",     group = "file/find" },
-                { "<leader>g",     group = "git" },
-                { "<leader>q",     group = "session" },
-                { "<leader>s",     group = "split" },
-                { "<leader>u",     group = "ui" },
+                { "<leader>t",     group = "tests" },
                 { "<leader>x",     group = "diagnostics" },
+                { "<leader>h",     group = "harpoon" },
+                -- { "<leader>g",     group = "git" },
+                -- { "<leader>q",     group = "session" },
+                -- { "<leader>s",     group = "split" },
+                -- { "<leader>u",     group = "ui" },
 
                 -- Subgroups
                 { "<leader>gh",    group = "git hunk" },

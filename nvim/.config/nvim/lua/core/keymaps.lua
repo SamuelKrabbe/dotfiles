@@ -83,24 +83,6 @@ vim.keymap.set("n", "<leader>ls", ":Lazy sync<CR>", { desc = "Sync plugins" })
 vim.keymap.set("n", "<leader>T", ":ToggleTheme<CR>", { desc = "Toggle theme" })
 
 -- ======================================================================
--- Built-in Terminal
--- ======================================================================
-local terminal = require("core.builtin-terminal")
-vim.keymap.set("n", "<leader>t", terminal.FloatingTerminal, {
-  noremap = true,
-  silent = true,
-  desc = "Toggle floating terminal",
-})
-
-vim.keymap.set("t", "<Esc>", function()
-  local st = terminal.terminal_state
-  if st.is_open then
-    vim.api.nvim_win_close(st.win, false)
-    st.is_open = false
-  end
-end, { noremap = true, silent = true, desc = "Close floating terminal" })
-
--- ======================================================================
 -- Quickfix & Location List Navigation
 -- ======================================================================
 

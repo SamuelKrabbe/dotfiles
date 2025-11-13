@@ -1,4 +1,3 @@
-
 local M = {}
 
 M.current_theme = "tokyonight"
@@ -22,7 +21,7 @@ end
 
 function M.set_theme(name)
     vim.cmd.colorscheme(name)
-    -- M.enable_transparency()
+    M.enable_transparency()
     M.current_theme = name
     print("Theme set to " .. name)
 

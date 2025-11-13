@@ -7,7 +7,7 @@ vim.g.maplocalleader = " "
 -- ======================================================================
 -- Search & Movement
 -- ======================================================================
-vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
+vim.keymap.set("n", "<leader>cc", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next match (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous match (centered)" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
@@ -75,7 +75,7 @@ vim.keymap.set("n", "<leader><leader>", ":source<CR>", { desc = "Source current 
 -- ======================================================================
 -- Plugin Management
 -- ======================================================================
-vim.keymap.set("n", "<C-l>", ":Lazy sync<CR>", { desc = "Sync plugins" })
+vim.keymap.set("n", "<leader>l", ":Lazy sync<CR>", { desc = "Sync plugins" })
 
 -- ======================================================================
 -- Theme Management
@@ -85,7 +85,7 @@ vim.keymap.set("n", "<leader>T", ":ToggleTheme<CR>", { desc = "Toggle theme" })
 -- ======================================================================
 -- Built-in Terminal
 -- ======================================================================
-local terminal = require("config.builtin-terminal")
+local terminal = require("core.builtin-terminal")
 vim.keymap.set("n", "<leader>t", terminal.FloatingTerminal, {
   noremap = true,
   silent = true,

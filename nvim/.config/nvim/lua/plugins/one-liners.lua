@@ -4,6 +4,9 @@ return {
 	},
 	{ -- Show historical versions of the file locally
 		"mbbill/undotree",
+        config = function() 
+            vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+        end
 	},
 	{ -- Show CSS Colors
 		"brenoprata10/nvim-highlight-colors",

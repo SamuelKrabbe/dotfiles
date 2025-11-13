@@ -2,14 +2,14 @@
 vim.opt.number = true                              -- Line numbers
 vim.opt.relativenumber = true                      -- Relative line numbers
 vim.opt.cursorline = true                          -- Highlight current line
-vim.opt.wrap = false                               -- Don't wrap lines
-vim.opt.scrolloff = 10                             -- Keep 10 lines above/below cursor 
+vim.opt.wrap = true                               -- Don't wrap lines
+vim.opt.scrolloff = 8                             -- Keep 10 lines above/below cursor 
 vim.opt.sidescrolloff = 8                          -- Keep 8 columns left/right of cursor
 
 -- Indentation
-vim.opt.tabstop = 2                                -- Tab width
-vim.opt.shiftwidth = 2                             -- Indent width
-vim.opt.softtabstop = 2                            -- Soft tab stop
+vim.opt.tabstop = 4                                -- Tab width
+vim.opt.shiftwidth = 4                             -- Indent width
+vim.opt.softtabstop = 4                            -- Soft tab stop
 vim.opt.expandtab = true                           -- Use spaces instead of tabs
 vim.opt.smartindent = true                         -- Smart auto-indenting
 vim.opt.autoindent = true                          -- Copy indent from current line
@@ -23,7 +23,7 @@ vim.opt.incsearch = true                           -- Show matches as you type
 -- Visual settings
 vim.opt.termguicolors = true                       -- Enable 24-bit colors
 vim.opt.signcolumn = "yes"                         -- Always show sign column
-vim.opt.colorcolumn = "100"                        -- Show column at 100 characters
+vim.opt.colorcolumn = "120"                        -- Show column at 120 characters
 vim.opt.showmatch = true                           -- Highlight matching brackets
 vim.opt.matchtime = 2                              -- How long to show matching bracket
 vim.opt.cmdheight = 1                              -- Command line height
@@ -38,13 +38,14 @@ vim.opt.lazyredraw = true                          -- Don't redraw during macros
 vim.opt.synmaxcol = 300                            -- Syntax highlighting limit 
 vim.opt.showtabline = 1                            -- Always show tabline (0=never, 1=when multiple tabs, 2=always)
 vim.opt.tabline = ''                               -- Use default tabline (empty string uses built-in)
+vim.opt.background = "dark"
 
 -- File handling
 vim.opt.backup = false                             -- Don't create backup files
 vim.opt.writebackup = false                        -- Don't create backup before writing
 vim.opt.swapfile = false                           -- Don't create swap files
 vim.opt.undofile = true                            -- Persistent undo
-vim.opt.undodir = vim.fn.expand("~/.vim/undodir")  -- Undo directory
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.updatetime = 300                           -- Faster completion
 vim.opt.timeoutlen = 500                           -- Key timeout duration
 vim.opt.ttimeoutlen = 0                            -- Key code timeout

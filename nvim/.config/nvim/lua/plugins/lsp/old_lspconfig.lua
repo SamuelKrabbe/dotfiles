@@ -1,0 +1,123 @@
+return {}
+-- return {
+--     "neovim/nvim-lspconfig",
+--     event = { "BufReadPre", "BufNewFile" },
+--     dependencies = {
+--         "williamboman/mason.nvim",
+--         "williamboman/mason-lspconfig.nvim",
+--     },
+--     opts = function()
+--         return {
+--             servers = {
+--                 pyright = {},
+--                 gopls = {
+--                     settings = {
+--                         gopls = {
+--                             -- e.g., use 'gofumpt' for formatting
+--                             gofumpt = true,
+--                         },
+--                     },
+--                 },
+--             },
+--         }
+--     end,
+--     config = function(_, opts)
+--         -- Diagnostics setup
+--         local icons = { Error = "", Warn = "", Hint = "", Info = "" }
+--         vim.diagnostic.config({
+--             underline = true,
+--             update_in_insert = false,
+--             virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
+--             severity_sort = true,
+--             signs = {
+--                 text = {
+--                     [vim.diagnostic.severity.ERROR] = icons.Error,
+--                     [vim.diagnostic.severity.WARN] = icons.Warn,
+--                     [vim.diagnostic.severity.HINT] = icons.Hint,
+--                     [vim.diagnostic.severity.INFO] = icons.Info,
+--                 },
+--             },
+--         })
+--
+--         local function on_attach(client, bufnr)
+--             local function map(mode, lhs, rhs, desc)
+--                 vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+--             end
+--
+--             -- LSP Keymaps
+--             map("n", "gd", vim.lsp.buf.definition, "Go to Definition")
+--             map("n", "gD", vim.lsp.buf.declaration, "Go to Declaration")
+--             map("n", "gr", vim.lsp.buf.references, "References")
+--             map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
+--             map("n", "<leader>rn", vim.lsp.buf.rename, "Rename Symbol")
+--             map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")
+--             map("n", "[d", vim.diagnostic.goto_prev, "Previous Diagnostic")
+--             map("n", "]d", vim.diagnostic.goto_next, "Next Diagnostic")
+--             map("n", "<leader>q", vim.diagnostic.setloclist, "Diagnostics to LocList")
+--
+--             -- Codelens refresh
+--             if client.server_capabilities.codeLensProvider then
+--                 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+--                     buffer = bufnr,
+--                     callback = vim.lsp.codelens.refresh,
+--                 })
+--             end
+--
+--             -- Inlay hints
+--             if client.server_capabilities.inlayHintProvider then
+--                 vim.lsp.inlay_hint.enable(bufnr, true)
+--             end
+--
+--             -- LSP-based folds
+--             if client.server_capabilities.foldingRangeProvider then
+--                 vim.wo.foldmethod = "expr"
+--                 vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
+--                 vim.wo.foldenable = true -- Added this to enable folding by default
+--             end
+--         end
+--
+--         -- FIX: Get default LSP capabilities. This is important for
+--         -- plugins to know what features the client (your Neovim) supports.
+--         local capabilities = vim.lsp.protocol.make_client_capabilities()
+--         -- If you add a completion plugin like nvim-cmp, you would merge
+--         -- its capabilities here, e.g.:
+--         -- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+--
+--         local lspconfig = require("lspconfig")
+--         local mason_lspconfig = require("mason-lspconfig")
+--
+--         mason_lspconfig.setup({
+--             ensure_installed = vim.tbl_keys(opts.servers),
+--             handlers = {
+--                 function(server_name)
+--                     local server_opts = opts.servers[server_name] or {}
+--
+--                     lspconfig[server_name].setup(vim.tbl_extend("force", {
+--                         on_attach = on_attach,
+--                         capabilities = capabilities,
+--                         -- Pass the flags from your original loop
+--                         flags = { debounce_text_changes = 150 },
+--                     }, server_opts))
+--                 end,
+--                 ["lua_ls"] = function()
+--                     lspconfig.lua_ls.setup({
+--                         -- Pass your keymaps and capabilities
+--                         on_attach = on_attach,
+--                         capabilities = capabilities,
+--                         flags = { debounce_text_changes = 150 },
+--                         settings = {
+--                             Lua = {
+--                                 workspace = { checkThirdParty = false },
+--                                 codeLens = { enable = true },
+--                                 completion = { callSnippet = "Replace" },
+--                                 diagnostics = {
+--                                     globals = { "vim" },
+--                                 },
+--                             },
+--                         },
+--                     })
+--                 end,
+--             },
+--         })
+--     end,
+-- }

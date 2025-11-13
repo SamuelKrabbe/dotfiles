@@ -1,4 +1,4 @@
-local theme = require("config.theme")
+local theme = require("core.theme")
 
 return {
     {

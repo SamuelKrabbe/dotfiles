@@ -1,10 +1,10 @@
 
 local M = {}
 
-M.current_theme = "catppuccin"
+M.current_theme = "tokyonight"
 
 function M.enable_transparency()
-    local groups = { "Normal", "NormalNC", "NormalFloat", "SignColumn", "VertSplit", "StatusLine", "StatusLineNC" }
+    local groups = { "Normal" } --, "NormalNC", "NormalFloat", "SignColumn", "VertSplit", "StatusLine", "StatusLineNC" }
     for _, group in ipairs(groups) do
         vim.api.nvim_set_hl(0, group, { bg = "none" })
     end
@@ -22,7 +22,7 @@ end
 
 function M.set_theme(name)
     vim.cmd.colorscheme(name)
-    M.enable_transparency()
+    -- M.enable_transparency()
     M.current_theme = name
     print("Theme set to " .. name)
 

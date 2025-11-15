@@ -56,13 +56,16 @@
         "format": "Disk: {free}"
     },
     "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+    // "timezone": "America/New_York",
+    // "format": "{:%H:%M • %d/%m/%Y}",
+    "format": "{:%d/%m/%Y • %H:%M}",
+    "tooltip-format": "<big>{:%A, %d %B %Y — %H:%M}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%H:%M}",
+    // "format-alt": "{:%d/%m/%Y}"
     },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10,
+        "spacing": 10
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"

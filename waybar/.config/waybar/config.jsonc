@@ -20,7 +20,7 @@
         "custom/separator", 
         "disk",
         "custom/separator", 
-        "clock"
+        "custom/clock"
         // "custom/separator", 
         // "tray",
     ],
@@ -55,13 +55,19 @@
         "path": "/",
         "format": "Disk: {free}"
     },
+    "custom/clock": {
+        "exec": "~/.local/bin/waybar-clock",
+        "interval": 1,
+        "on-click": "~/.local/bin/waybar-clock toggle",
+        "tooltip-format": "{:%A, %d %B %Y — %H:%M}"
+    },
     "clock": {
-    // "timezone": "America/New_York",
-    // "format": "{:%H:%M • %d/%m/%Y}",
-    "format": "{:%d/%m/%Y • %H:%M}",
-    "tooltip-format": "<big>{:%A, %d %B %Y — %H:%M}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%H:%M}",
-    // "format-alt": "{:%d/%m/%Y}"
+        // "timezone": "America/New_York",
+        // "format": "{:%H:%M • %d/%m/%Y}",
+        "format": "{:%d/%m/%Y • %H:%M}",
+        "tooltip-format": "<big>{:%A, %d %B %Y — %H:%M}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%H:%M}",
+        // "format-alt": "{:%d/%m/%Y}"
     },
     "tray": {
         // "icon-size": 21,
@@ -90,54 +96,54 @@
               },
               "on-click": "pavucontrol"
     }
-		//   "mpd": {
-		//       "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-		//       "format-disconnected": "Disconnected ",
-		//       "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-		//       "unknown-tag": "N/A",
-		//       "interval": 5,
-		//       "consume-icons": {
-		//           "on": " "
-		//       },
-		//       "random-icons": {
-		//           "off": "<span color=\"#f53c3c\"></span> ",
-		//           "on": " "
-		//       },
-		//       "repeat-icons": {
-		//           "on": " "
-		//       },
-		//       "single-icons": {
-		//           "on": "1 "
-		//       },
-		//       "state-icons": {
-		//           "paused": "",
-		//           "playing": ""
-		//       },
-		//       "tooltip-format": "MPD (connected)",
-		//       "tooltip-format-disconnected": "MPD (disconnected)"
-		//   },
-		//   "custom/media": {
-		//       "format": "{icon} {text}",
-		//       "return-type": "json",
-		//       "max-length": 40,
-		//       "format-icons": {
-		//           "spotify": "",
-		//           "default": "🎜"
-		//       },
-		//       "escape": true,
-		//       "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-		//       // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-		//   },
-		//   "custom/power": {
-		//       "format" : "⏻ ",
-		// "tooltip": false,
-		// "menu": "on-click",
-		// "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		// "menu-actions": {
-		// 	"shutdown": "shutdown",
-		// 	"reboot": "reboot",
-		// 	"suspend": "systemctl suspend",
-		// 	"hibernate": "systemctl hibernate"
-		// }
-		//   }
+        //   "mpd": {
+        //       "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        //       "format-disconnected": "Disconnected ",
+        //       "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        //       "unknown-tag": "N/A",
+        //       "interval": 5,
+        //       "consume-icons": {
+        //           "on": " "
+        //       },
+        //       "random-icons": {
+        //           "off": "<span color=\"#f53c3c\"></span> ",
+        //           "on": " "
+        //       },
+        //       "repeat-icons": {
+        //           "on": " "
+        //       },
+        //       "single-icons": {
+        //           "on": "1 "
+        //       },
+        //       "state-icons": {
+        //           "paused": "",
+        //           "playing": ""
+        //       },
+        //       "tooltip-format": "MPD (connected)",
+        //       "tooltip-format-disconnected": "MPD (disconnected)"
+        //   },
+        //   "custom/media": {
+        //       "format": "{icon} {text}",
+        //       "return-type": "json",
+        //       "max-length": 40,
+        //       "format-icons": {
+        //           "spotify": "",
+        //           "default": "🎜"
+        //       },
+        //       "escape": true,
+        //       "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        //       // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        //   },
+        //   "custom/power": {
+        //       "format" : "⏻ ",
+        // "tooltip": false,
+        // "menu": "on-click",
+        // "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+        // "menu-actions": {
+        // 	"shutdown": "shutdown",
+        // 	"reboot": "reboot",
+        // 	"suspend": "systemctl suspend",
+        // 	"hibernate": "systemctl hibernate"
+        // }
+        //   }
 }

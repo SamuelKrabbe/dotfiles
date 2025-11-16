@@ -25,11 +25,11 @@ window#waybar {
     padding: 0 6px;
     color: @wht;
     background: transparent;
-    border-bottom: 3px solid @bg;
+    border-top: 3px solid @bg;
 }
 #workspaces button.active {
     color: @cyn;
-    border-bottom: 3px solid @cyn;
+    border-top: 3px solid @cyn;
 }
 /* #workspaces button.empty { */
 /*     color: @wht; */

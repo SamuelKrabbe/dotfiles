@@ -2,13 +2,16 @@
 {
     "layer": "top",
     "position": "top",
+    // "width": 1910,
     "height": 30,
-    "spacing": 4,
+    // "margin-top": 5,
+    "spacing": 5,
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window"
     ],
     "modules-center": [
+        "custom/clock"
     ],
     "modules-right": [
         // "pulseaudio",
@@ -18,9 +21,7 @@
         "custom/separator", 
         "memory",
         "custom/separator", 
-        "disk",
-        "custom/separator", 
-        "custom/clock"
+        "disk"
         // "custom/separator", 
         // "tray",
     ],

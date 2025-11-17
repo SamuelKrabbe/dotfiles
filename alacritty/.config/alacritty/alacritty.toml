@@ -18,7 +18,7 @@ size = 11
 [window]
 padding.x = 14
 padding.y = 14
-opacity = 1
+opacity = 0.9
 decorations = "None"
 
 [keyboard]

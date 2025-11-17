@@ -1,25 +1,40 @@
-# .bashrc
-
-# Source global definitions
+# ----------------------------------------
+# Load global definitions
+# ----------------------------------------
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# User specific environment
+# ----------------------------------------
+# PATH adjustments
+# ----------------------------------------
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+# ----------------------------------------
+# Early exit for non-interactive shells
+# ----------------------------------------
+[[ $- != *i* ]] && return
 
-# User specific aliases and functions
+# ----------------------------------------
+# Aliases
+# ----------------------------------------
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# ----------------------------------------
+# Prompt
+# ----------------------------------------
+PS1='[\u@\h \W]\$ '
+
+# ----------------------------------------
+# Load user-specific configs
+# ----------------------------------------
 if [ -d ~/.bashrc.d ]; then
     for rc in ~/.bashrc.d/*; do
-        if [ -f "$rc" ]; then
-            . "$rc"
-        fi
+        [ -f "$rc" ] && . "$rc"
     done
 fi
 unset rc

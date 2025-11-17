@@ -1,150 +1,27 @@
-// -*- mode: jsonc -*-
 {
-    "layer": "top",
-    "position": "top",
-    // "width": 1910,
-    "height": 30,
-    // "margin-top": 5,
-    "spacing": 5,
+    "layer": "top", // Waybar at top layer
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 35, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 5, // Gaps between modules (4px)
+
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/window"
+        "custom/arch",
+        "hyprland/workspaces"
     ],
     "modules-center": [
-        "custom/clock"
+        "hyprland/window"
     ],
     "modules-right": [
-        // "pulseaudio",
+        "wireplumber",
         "network",
-        "custom/separator", 
         "cpu",
-        "custom/separator", 
         "memory",
-        "custom/separator", 
-        "disk"
-        // "custom/separator", 
-        // "tray",
+        "hyprland/language",
+        "clock"
     ],
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "warp-on-scroll": false,
-        "format": "{name}"
-    },
-    "hyprland/window": {
-        "max-length": 40,
-        "separate-outputs": false
-    },
-    "custom/separator": {
-        "format": "|",
-        "interval": 0,
-        "tooltip": false
-    },
-    "network": {
-        "format": "Online",
-        "format-disconnected": "Disconnected ()"
-    },
-    "cpu": {
-        "format": "CPU: {usage}%",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "Mem: {used}GiB"
-    },
-    "disk": {
-        "interval": 60,
-        "path": "/",
-        "format": "Disk: {free}"
-    },
-    "custom/clock": {
-        "exec": "~/.local/bin/waybar-clock",
-        "interval": 1,
-        "on-click": "~/.local/bin/waybar-clock toggle",
-        "tooltip-format": "{:%A, %d %B %Y — %H:%M}"
-    },
-    "clock": {
-        // "timezone": "America/New_York",
-        // "format": "{:%H:%M • %d/%m/%Y}",
-        "format": "{:%d/%m/%Y • %H:%M}",
-        "tooltip-format": "<big>{:%A, %d %B %Y — %H:%M}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%H:%M}",
-        // "format-alt": "{:%d/%m/%Y}"
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
-        // "icons": {
-        //   "blueman": "bluetooth",
-        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        // }
-    },
-    "pulseaudio": {
-              // "scroll-step": 1, // %, can be a float
-              "format": "{volume}% {icon} {format_source}",
-              "format-bluetooth": "{volume}% {icon} {format_source}",
-              "format-bluetooth-muted": " {icon} {format_source}",
-              "format-muted": " {format_source}",
-              "format-source": "{volume}% ",
-              "format-source-muted": "",
-              "format-icons": {
-                  "headphone": "",
-                  "hands-free": "",
-                  "headset": "",
-                  "phone": "",
-                  "portable": "",
-                  "car": "",
-                  "default": ["", "", ""]
-              },
-              "on-click": "pavucontrol"
-    }
-        //   "mpd": {
-        //       "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        //       "format-disconnected": "Disconnected ",
-        //       "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        //       "unknown-tag": "N/A",
-        //       "interval": 5,
-        //       "consume-icons": {
-        //           "on": " "
-        //       },
-        //       "random-icons": {
-        //           "off": "<span color=\"#f53c3c\"></span> ",
-        //           "on": " "
-        //       },
-        //       "repeat-icons": {
-        //           "on": " "
-        //       },
-        //       "single-icons": {
-        //           "on": "1 "
-        //       },
-        //       "state-icons": {
-        //           "paused": "",
-        //           "playing": ""
-        //       },
-        //       "tooltip-format": "MPD (connected)",
-        //       "tooltip-format-disconnected": "MPD (disconnected)"
-        //   },
-        //   "custom/media": {
-        //       "format": "{icon} {text}",
-        //       "return-type": "json",
-        //       "max-length": 40,
-        //       "format-icons": {
-        //           "spotify": "",
-        //           "default": "🎜"
-        //       },
-        //       "escape": true,
-        //       "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        //       // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-        //   },
-        //   "custom/power": {
-        //       "format" : "⏻ ",
-        // "tooltip": false,
-        // "menu": "on-click",
-        // "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-        // "menu-actions": {
-        // 	"shutdown": "shutdown",
-        // 	"reboot": "reboot",
-        // 	"suspend": "systemctl suspend",
-        // 	"hibernate": "systemctl hibernate"
-        // }
-        //   }
+
+    "include": [
+		"~/.config/waybar/modules.json"
+	]
 }

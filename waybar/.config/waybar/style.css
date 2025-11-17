@@ -14,79 +14,58 @@
     font-family: "JetBrainsMono Nerd Font", monospace;
     font-size: 14px;
     font-weight: bold;
+    transition: background-color .3s ease-out;
 }
 
 window#waybar {
-  background: @bg;
-  color: @fg;
+    background: @bg;
+    color: @fg;
+    transition: background-color .5s;
 }
-
-#workspaces button {
-    padding: 0 6px;
-    color: @wht;
-    background: transparent;
-    border-top: 3px solid @bg;
-}
-#workspaces button.active {
-    color: @cyn;
-    border-top: 3px solid @cyn;
-}
-/* #workspaces button.empty { */
-/*     color: @wht; */
-/* } */
-/* #workspaces button.empty.active { */
-/*     color: @wht; */
-/*     border-bottom: 3px solid @cyn; */
-/* } */
 
 #clock,
-#custom-clock,
-#custom-sep,
-#battery,
 #cpu,
 #memory,
 #disk,
 #network,
-#tray {
-    padding: 0 8px;
-    color: @white;
+#wireplumber,
+#custom-media,
+#tray,
+#language {
+    padding: 0 10px;
+    /* border-radius: 15px; */
 }
 
-#custom-sep {
-    color: @brblk;
+#workspaces button {
+  background: transparent;
+  font-weight: bold;
+  font-size: 14pt;
+  color: @fg;
+  border:none;
+  border-radius: 7px;
 }
 
-#custom-clock {
-    color: @wht;
-    /* border-bottom: 4px solid @wht; */
+#workspaces button.active {
+    color: @cyn;
+    border-bottom: 2px solid @cyn;
 }
 
-#clock {
-    color: @wht;
-    /* border-bottom: 4px solid @wht; */
+#workspaces button.empty.active {
+    color: @cyn;
 }
 
-#battery {
-    color: @mag;
-    /* border-bottom: 4px solid @mag; */
+#workspaces button:hover {
+  color: @wht;
+  box-shadow: none;
 }
 
-#disk {
-    color: @ylw;
-    /* border-bottom: 4px solid @ylw; */
+#custom-arch {
+    margin-left: 5px;
+    padding: 0 10px;
+    font-size: 25px;
+    transition: color .5s;
 }
 
-#memory {
-    color: @mag;
-    /* border-bottom: 4px solid @mag; */
-}
-
-#cpu {
-    color: @grn;
-    /* border-bottom: 4px solid @grn; */
-}
-
-#network {
-    color: @blu;
-    /* border-bottom: 4px solid @blu; */
+#custom-arch:hover {
+    color: #1793d1;
 }

@@ -50,10 +50,6 @@ window#waybar {
     border-bottom: 2px solid @cyn;
 }
 
-#workspaces button.empty.active {
-    color: @cyn;
-}
-
 #workspaces button:hover {
   color: @wht;
   box-shadow: none;

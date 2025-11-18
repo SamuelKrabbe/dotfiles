@@ -103,3 +103,5 @@ export GOPATH="$HOME/go"
 # Python virtual environments
 export WORKON_HOME="$HOME/.venvs"
 export VIRTUAL_ENV_DISABLE_PROMPT=1  # optional: prevents auto-changing prompt
+
+source /usr/share/nvm/init-nvm.sh

@@ -1,26 +1,26 @@
-@define-color bg    #1a1b26;
-@define-color fg    #a9b1d6;
-@define-color blk   #32344a;
-@define-color red   #f7768e;
-@define-color grn   #9ece6a;
-@define-color ylw   #e0af68;
-@define-color blu   #7aa2f7;
-@define-color mag   #ad8ee6;
-@define-color cyn   #0db9d7;
+@define-color bg #1a1b26;
+@define-color fg #a9b1d6;
+@define-color blk #32344a;
+@define-color red #f7768e;
+@define-color grn #9ece6a;
+@define-color ylw #e0af68;
+@define-color blu #7aa2f7;
+@define-color mag #ad8ee6;
+@define-color cyn #0db9d7;
 @define-color brblk #444b6a;
-@define-color wht   #ffffff;
+@define-color wht #ffffff;
 
 * {
-    font-family: "JetBrainsMono Nerd Font", monospace;
-    font-size: 14px;
-    font-weight: bold;
-    transition: background-color .3s ease-out;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color .3s ease-out;
 }
 
 window#waybar {
-    background: @bg;
-    color: @fg;
-    transition: background-color .5s;
+  background: @bg;
+  color: @fg;
+  transition: background-color .5s;
 }
 
 #clock,
@@ -32,8 +32,8 @@ window#waybar {
 #custom-media,
 #tray,
 #language {
-    padding: 0 10px;
-    /* border-radius: 15px; */
+  padding: 0 10px;
+  /* border-radius: 15px; */
 }
 
 #workspaces button {
@@ -41,13 +41,13 @@ window#waybar {
   font-weight: bold;
   font-size: 14pt;
   color: @fg;
-  border:none;
+  border: none;
   border-radius: 7px;
 }
 
 #workspaces button.active {
-    color: @cyn;
-    border-bottom: 2px solid @cyn;
+  color: @cyn;
+  border-top: 2px solid @cyn;
 }
 
 #workspaces button:hover {
@@ -56,12 +56,12 @@ window#waybar {
 }
 
 #custom-arch {
-    margin-left: 5px;
-    padding: 0 10px;
-    font-size: 25px;
-    transition: color .5s;
+  margin-left: 5px;
+  padding: 0 10px;
+  font-size: 25px;
+  transition: color .5s;
 }
 
 #custom-arch:hover {
-    color: #1793d1;
+  color: #1793d1;
 }

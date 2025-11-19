@@ -4,6 +4,7 @@ alias docker-init="~/.oh-my-zsh/custom/scripts/docker_init.zsh"
 
 alias lzd="lazydocker"
 alias lzg="lazygit"
+alias vim="nvim"
 alias n="nvim"
 alias minecraft="minecraft-launcher"
 alias moms-desktop="ssh moms-desktop"

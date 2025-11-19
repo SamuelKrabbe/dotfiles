@@ -42,6 +42,9 @@ return {
                 "black", -- python formatter
                 "pylint",
                 "eslint_d",
+                "gofumpt",
+                "golines",
+                "delve",
             },
         },
         dependencies = {

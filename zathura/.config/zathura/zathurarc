@@ -1,0 +1,63 @@
+# -----------------------------
+# Appearance
+# -----------------------------
+set font "JetBrainsMono Nerd Font 14"
+set adjust-open "best-fit"
+set guioptions ""
+
+# Colors (Catppuccin-like)
+set default-fg "#cdd6f4"
+set default-bg "#1e1e2e"
+
+set recolor "true"
+set recolor-keephue "true"
+set recolor-dark  "#1e1e2e"
+set recolor-light "#cdd6f4"
+
+# Highlight
+set highlight-color      "#f38ba8"
+set highlight-active-color "#a6e3a1"
+
+# -----------------------------
+# Behavior
+# -----------------------------
+set scroll-step 80
+set scroll-step-h 50
+set zoom-step 10
+set pages-per-row 1
+set smooth-scroll true
+
+# Enable incremental search
+set incremental-search true
+
+# Store history
+set database "sqlite"
+set save-position "true"
+set save-query "true"
+set save-history "true"
+
+# -----------------------------
+# Shortcuts
+# -----------------------------
+# Zoom
+map + zoom in
+map - zoom out
+map = zoom reset
+
+# Fit options
+map f toggle_fullscreen
+map w set zoom-mode width
+map p set zoom-mode page
+
+# Navigation
+map J navigate next
+map K navigate previous
+
+# Recolor toggle
+map r toggle_recolor
+
+# Rotate
+map R rotate
+
+# Quit
+map q quit

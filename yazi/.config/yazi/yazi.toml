@@ -1,9 +1,36 @@
 [opener]
 pdf = [
-  { run = "zathura \"$1\"", desc = "Open with Zathura", block = false, for = "unix" }
+    { run = 'zathura "$@"', desc = "Open PDF", block = false, orphan = true, for = "unix" }
 ]
 
-[manager]
-openers = [
-  { name = "pdf", extensions = ["pdf"] }
+office = [
+    { run = 'onlyoffice-desktopeditors "$@"', desc = "Open Office Docs", block = false, orphan = true, for = "unix" }
+]
+
+play = [
+    { run = 'mpv "$@"', orphan = true, for = "unix" },
+]
+
+edit = [
+    { run = '$EDITOR "$@"', block = true, for = "unix" },
+]
+
+# open = [
+#     { run = 'xdg-open "$@"', desc = "Open" }
+# ]
+
+[open]
+prepend_rules = [
+    { name = "*.pdf",  use = "pdf" },
+
+    # Office formats → ONLYOFFICE
+    { name = "*.doc",  use = "office" },
+    { name = "*.docx", use = "office" },
+    { name = "*.xls",  use = "office" },
+    { name = "*.xlsx", use = "office" },
+    { name = "*.ppt",  use = "office" },
+    { name = "*.pptx", use = "office" },
+    { name = "*.odt",  use = "office" },
+    { name = "*.ods",  use = "office" },
+    { name = "*.odp",  use = "office" }
 ]

@@ -8,7 +8,7 @@ cd "$(dirname "$0")" || exit
 
 # Function to show help
 show_help() {
-    echo "Usage: update-dotfiles 0 -m \"<tag>: <message>\""
+    echo "Usage: update-dotfiles -m \"<tag>: <message>\""
     echo ""
     echo "Commit message must start with one of the following tags followed by a message:"
     echo "  feat:      New feature"

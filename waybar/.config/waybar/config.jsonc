@@ -15,10 +15,10 @@
     ],
     "modules-right": [
         "group/info",
-        "custom/moms-pc",
         "network",
         "pulseaudio",
-        "pulseaudio#microphone",
+        // "pulseaudio#microphone",
+        "custom/moms-pc",
         "group/spotify"
     ],
 
@@ -106,14 +106,15 @@
     },
 
     "custom/moms-pc": {
-        "exec": "$HOME/.config/waybar/scripts/check-moms-pc.sh",
+        "exec": "/home/samuel/scripts/shell_scripts/check-moms-pc.sh",
         "interval": 10,
-        "return-type": "string",
-        "format": "🖥️  {}",
+        "return-type": "json",
+        "format": "{icon} {text}",
         "format-icons": {
             "on": "🟢",
             "off": "🔴"
-        }
+        },
+        "tooltip": false
     },
 
     "group/spotify": {
@@ -133,7 +134,7 @@
         "tooltip": false
     },
     "custom/spotify": {
-        "exec": "$HOME/.config/waybar/scripts/mediaplayer --player spotify", 
+        "exec": "/home/samuel/.config/waybar/scripts/mediaplayer --player spotify", 
         "format": "{}",
         "return-type": "json",
         "on-click": "playerctl --player=spotify play-pause",
@@ -143,7 +144,7 @@
         "max-length": 50
     },
     "custom/firefox": {
-        "exec": "$HOME/.config/waybar/scripts/mediaplayer --player firefox",
+        "exec": "/home/samuel/.config/waybar/scripts/mediaplayer --player firefox",
         "format": "{} ",
         "return-type": "json",
         "on-click": "playerctl --player=firefox play-pause",
@@ -153,7 +154,7 @@
         "max-length": 50
     },
     "custom/mediaplayer": {
-        "exec": "$HOME/.config/waybar/scripts/mediaplayer --player spotify", 
+        "exec": "/home/samuel/.config/waybar/scripts/mediaplayer --player spotify", 
         "return-type": "json",
         "format": "{}", 
         "max-length": 40,

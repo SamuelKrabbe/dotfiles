@@ -1,0 +1,1 @@
+dotfiles/scripts/scripts/shell_scripts/check-moms-pc.sh

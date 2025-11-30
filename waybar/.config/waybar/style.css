@@ -1,67 +1,134 @@
-@define-color bg #1a1b26;
-@define-color fg #a9b1d6;
-@define-color blk #32344a;
-@define-color red #f7768e;
-@define-color grn #9ece6a;
-@define-color ylw #e0af68;
-@define-color blu #7aa2f7;
-@define-color mag #ad8ee6;
-@define-color cyn #0db9d7;
-@define-color brblk #444b6a;
-@define-color wht #ffffff;
+@import "mocha.css";
 
+/* === Global Defaults === */
 * {
+  border: none;
+  border-radius: 0;
   font-family: "JetBrainsMono Nerd Font", monospace;
-  font-size: 14px;
   font-weight: bold;
-  transition: background-color .3s ease-out;
+  font-size: 14px;
+  min-height: 0;
 }
 
 window#waybar {
-  background: @bg;
-  color: @fg;
-  transition: background-color .5s;
+  background: @base;
+  color: @text;
+  opacity: 0.85;
 }
 
-#clock,
-#cpu,
-#memory,
-#disk,
-#network,
-#wireplumber,
-#custom-media,
-#tray,
-#language {
-  padding: 0 10px;
-  /* border-radius: 15px; */
+/* === Workspaces === */
+#workspaces {
+  background: @base;
+  padding: 0 5px 0 5px;
 }
 
 #workspaces button {
+  padding: 5px;
+  color: @sapphire;
   background: transparent;
-  font-weight: bold;
-  font-size: 14pt;
-  color: @fg;
-  border: none;
-  border-radius: 7px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-#workspaces button.active {
-  color: @cyn;
-  border-top: 2px solid @cyn;
+#workspaces button.active,
+#workspaces button.focused {
+  color: @sapphire;
+}
+
+#workspaces button.urgent {
+  color: @red;
+  background: @base;
 }
 
 #workspaces button:hover {
-  color: @wht;
-  box-shadow: none;
+  background: @crust;
+  color: @text;
 }
 
-#custom-arch {
-  margin-left: 5px;
+/* === Shared Module Styling === */
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#disk,
+#custom-spotify,
+#custom-logout,
+#tray,
+#backlight {
+  background: @base;
+  padding: 10px 10px;
+  margin: 0;
+}
+
+/* === Individual Modules === */
+#backlight {
+  color: @green;
+}
+
+#window {
+  color: @yellow;
+  padding-left: 5px;
+}
+
+#clock {
+  color: @white;
+}
+
+#cpu {
+  color: @green;
+}
+
+#memory {
+  color: @sapphire;
+}
+
+#disk {
+  color: @yellow;
+}
+
+#network {
+  color: @peach;
+}
+
+/* #pulseaudio { */
+/*   color: @teal; */
+/* } */
+
+/* #pulseaudio.microphone { */
+/*   color: @sky; */
+/* } */
+
+#battery {
+  color: @yellow;
+}
+
+#custom-music {
+  color: @subtext;
+  background-color: @blue;
+  font-size: 40px;
   padding: 0 10px;
-  font-size: 25px;
-  transition: color .5s;
+  margin-right: 0;
+  border-radius: 15px 0px 0px 15px;
 }
 
-#custom-arch:hover {
-  color: #1793d1;
+#custom-spotify {
+  color: @green;
+  padding: 0 10px;
+  margin-left: 0;
+  border-radius: 0px 15px 15px 0px;
+}
+
+#custom-firefox {
+  color: @peach;
+}
+
+#custom-logout {
+  color: @sky;
+}
+
+#custom-music {
+  padding-right: 10px;
+  font-size: 20px;
 }

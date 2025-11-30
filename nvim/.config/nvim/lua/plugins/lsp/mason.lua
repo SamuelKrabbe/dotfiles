@@ -12,6 +12,7 @@ return {
 				"pyright",
 				"eslint",
 				"gopls",
+				"angularls",
 			},
 		},
 		dependencies = {

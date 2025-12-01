@@ -111,8 +111,8 @@
         "return-type": "json",
         "format": "{icon} {text}",
         "format-icons": {
-            "on": "🟢",
-            "off": "🔴"
+            "on": " ",
+            "off": " "
         },
         "tooltip": false
     },

@@ -106,10 +106,9 @@ window#waybar {
   color: @yellow;
 }
 
-#custom-moms-pc {
-  color: @green;
-  padding: 5px 10px 0px 10px;
-}
+/* #custom-moms-pc { */
+/*   color: @green; */
+/* } */
 
 #custom-music {
   color: @subtext;

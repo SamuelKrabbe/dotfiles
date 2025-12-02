@@ -13,6 +13,7 @@ return {
 				"eslint",
 				"gopls",
 				"angularls",
+				"postres_lsp",
 			},
 		},
 		dependencies = {

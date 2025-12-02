@@ -33,6 +33,7 @@ export HOMELAB="192.168.0.34"
 
 # Go
 export GOPATH="$HOME/go"
+export PATH="$PATH:$HOME/go/bin"
 
 # Python (virtualenvwrapper)
 export WORKON_HOME="$HOME/.venvs"

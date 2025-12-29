@@ -1,7 +1,7 @@
 # -----------------------------
 # Appearance
 # -----------------------------
-set font "JetBrainsMono Nerd Font 14"
+set font "JetBrainsMono Nerd Font 12"
 set adjust-open "best-fit"
 set guioptions ""
 
@@ -9,7 +9,7 @@ set guioptions ""
 set default-fg "#cdd6f4"
 set default-bg "#1e1e2e"
 
-set recolor "true"
+set recolor "false"
 set recolor-keephue "true"
 set recolor-dark  "#1e1e2e"
 set recolor-light "#cdd6f4"

@@ -1,11 +1,3 @@
-# -----------------------------
-# Appearance
-# -----------------------------
-set font "JetBrainsMono Nerd Font 12"
-set adjust-open "best-fit"
-set guioptions ""
-
-# Colors (Catppuccin Mocha)
 set default-fg                rgba(205,214,244,1)
 set default-bg                rgba(30,30,46,1)
 
@@ -43,47 +35,3 @@ set render-loading-fg         rgba(205,214,244,1)
 set highlight-color           rgba(147,153,178,0.3)
 set highlight-fg              rgba(205,214,244,1)
 set highlight-active-color    rgba(203,166,247,0.3)
-
-# -----------------------------
-# Behavior
-# -----------------------------
-set scroll-step 80
-set scroll-step-h 50
-set zoom-step 10
-set pages-per-row 1
-set smooth-scroll true
-
-# Enable incremental search
-set incremental-search true
-
-# Store history
-set database "sqlite"
-set save-position "true"
-set save-query "true"
-set save-history "true"
-
-# -----------------------------
-# Shortcuts
-# -----------------------------
-# Zoom
-map + zoom in
-map - zoom out
-map = zoom reset
-
-# Fit options
-map f toggle_fullscreen
-map w set zoom-mode width
-map p set zoom-mode page
-
-# Navigation
-map J navigate next
-map K navigate previous
-
-# Recolor toggle
-map r toggle_recolor
-
-# Rotate
-map R rotate
-
-# Quit
-map q quit

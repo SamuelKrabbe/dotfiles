@@ -6,9 +6,10 @@
     "name": "main",
     "height": 28,
     "reload_style_on_change": true,
-    // "output": "eDP-1",
-
-    "margin": 5,
+    "margin-top": 5,
+    "margin-left": 3,
+    "margin-right": 3,
+    "margin-bottom": 2,
 
     "modules-left": [
       // "group/traym",

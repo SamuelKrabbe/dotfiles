@@ -1,285 +1,341 @@
-{
+[
+    {
+    // MAIN BAR //
     "layer": "top",
-    "position": "bottom",
-    "mode": "dock",
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "height": 0,
+    "position": "top",
+    "name": "main",
+    "height": 28,
+    "reload_style_on_change": true,
+    // "output": "eDP-1",
+
+    "margin": 5,
+
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/window"
+      // "group/traym",
+      // "custom/spacer5",
+      "hyprland/workspaces",
+      // "custom/spacer2",
+      // "custom/spacer6",
+      "hyprland/submap",
+      "hyprland/window"
     ],
-    "modules-center": [
-        "clock"
-    ],
+
     "modules-right": [
-        "group/info",
-        "network",
-        "pulseaudio",
-        "pulseaudio#microphone",
-        "custom/moms-pc",
-        "group/spotify"
+      "custom/spacer1",
+      "cpu",
+      "temperature",
+      "custom/nvidia",
+      // "group/storage",
+      "memory#ram",
+      "memory#swap",
+      "disk",
+      "network#info",
+      "custom/spacer2",
+      "pulseaudio#input",
+      "pulseaudio#output",
+      "custom/headsetbattery",
+      "custom/spacer3",
+      "custom/mom",
+      "hyprland/language",
+      "custom/spacer4",
+      "clock",
+      "custom/weather"
     ],
 
     // Modules
-    "hyprland/window": {
-        "format": "󰣇 {}",
-        "max-length": 50
+    "disk": {
+      "interval": 16,
+      "format": " {percentage_used}%",
+      "tooltip": "{}",
+      "tooltip-format": "Free {free}",
+      "on-click": "qdirstat & aplay ~/.config/sounds/interact.wav",
+      "states": {
+        "warning": 85,
+        "critical": 95
+      }
     },
 
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{icon} {percent}%",
-        "format-icons": ["󰃞", "󰃟", "󰃠"],
-        "on-scroll-up": "brightnessctl set 1%+",
-        "on-scroll-down": "brightnessctl set 1%-",
-        "min-length": 6
+    "cava": {
+        // "cava_config": "~/.config/picom.conf",
+        "framerate": 30,
+        "autosens": 0,
+        "sensitivity": 30,
+        "bars": 16,
+        "lower_cutoff_freq": 20,
+        "higher_cutoff_freq": 20000,
+        "hide_on_silence": true,
+        // "format_silent": "quiet",
+        "method": "pipewire",
+        "source": "auto",
+        "stereo": false,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "noise_reduction": 0.2,
+        "input_delay": 2,
+        "sleep_timer": 5,
+        // "format-icons": ["▁","▁","▁","▁","▁","▁","▁","▁","▁","▁","▁","▁","▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "format-icons": ["⡀","⡀","⡄","⡆","⡇"]
     },
 
-    "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "tooltip": false,
-        "format-muted": " ",
-        "on-click": "pavucontrol &",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
-        "scroll-step": 5,
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", "", ""]
-        }
+    "custom/weather": {
+      "format": "{}°",
+      "tooltip": true,
+      "interval": 60,
+      "exec": "wttrbar --nerd --location Oulu",
+      "return-type": "json"
     },
 
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": " ",
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-",
-        "scroll-step": 5
+    "group/traym": {
+      "orientation": "horizontal",
+      "drawer": {},
+      "modules": ["custom/trayicon", "tray"]
     },
 
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-            "active": " ",
-            "default": " "
-        }
+    "group/storage": {
+      "orientation": "horizontal",
+      "drawer": {
+        "transition-duration": "500",
+        "transition-left-to-right": "true",
+        "children-class": "drawer-child"
+        //"click-to-reveal": "false"
+      },
+      "modules": ["memory#ram", 
+        "memory#swap" ,
+        "disk"
+      ]
     },
 
-    "tray": {
-        "icon-size": 13,
-        "spacing": 10
+    "custom/nvidia": {
+      "interval": 4,
+      "return-type": "json",
+      "exec": "~/scripts/shell_scripts/nvidia-status.sh",
+      "format": "<span size='x-large' rise='-2500'>󰢮</span>{text}",
+      "tooltip": "true",
+      "tooltip-format": "{alt}"
+    },
+
+    "custom/mom": {
+        "interval": 5,
+        "return-type": "json",
+        "tooltip": true,
+        "tooltip-format": "{alt}",
+        "format": "{text}",
+        "exec": "~/scripts/shell_scripts/check-moms-pc.sh"
     },
 
     "clock": {
-        "format": "{:%a, %d %b • %H:%M:%S}",
-        "format-alt": "{:%H:%M:%S}",
-        "interval": 1,
-        "tooltip-format": "<b>{:%A, %d %b %Y}</b>\n\n<tt>{calendar}</tt>",
-        "calendar": {
-            "mode": "month",
-            "mode-mon-col": 3,
-            "on-scroll": 1,
-            "on-click-right": "mode",
-            "format": {
-                "months": "<span color='#a6adc8'><b>{}</b></span>",
-                "weekdays": "<span color='#a6adc8'><b>{}</b></span>",
-                "today": "<span color='#a6adc8'><b>{}</b></span>",
-                "days": "<span color='#555869'><b>{}</b></span>"
-            }
-        },
-        "actions": {
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
+      "interval": 1,
+      "format": " {:%H:%M:%S    %a %d.%m}",
+      "tooltip-format": "{calendar}",
+      "calendar": {
+        "weeks-pos": "right",
+        "mode": "month",
+        "format": {
+          "months": "<span color='#cba6f7'><b>{}</b></span>",
+          "days": "<span color='#cdd6f4'><b>{}</b></span>",
+          "weeks": "<span color='#94e2d5'> W{}</span>",
+          "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+          "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
         }
-    },
-
-    "custom/moms-pc": {
-        "exec": "/home/samuel/scripts/shell_scripts/check-moms-pc.sh",
-        "interval": 10,
-        "return-type": "json",
-        "format": "{icon} {text}",
-        "format-icons": {
-            "on": " ",
-            "off": " "
-        },
-        "tooltip": false
-    },
-
-    "group/spotify": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 500,
-            "children-class": "not-power",
-            "transition-left-to-right": true
-        },
-        "modules": [
-            "custom/music",
-            "custom/spotify"
-        ]
-    },
-    "custom/music": {
-        "format": "󰽰",
-        "tooltip": false
-    },
-    "custom/spotify": {
-        "exec": "/home/samuel/.config/waybar/scripts/mediaplayer --player spotify", 
-        "format": "{}",
-        "return-type": "json",
-        "on-click": "playerctl --player=spotify play-pause",
-        "on-click-right": "playerctl --player=spotify next",
-        "on-scroll-up": "playerctl --player=spotify next",
-        "on-scroll-down": "playerctl --player=spotify previous",
-        "max-length": 50
-    },
-    "custom/firefox": {
-        "exec": "/home/samuel/.config/waybar/scripts/mediaplayer --player firefox",
-        "format": "{} ",
-        "return-type": "json",
-        "on-click": "playerctl --player=firefox play-pause",
-        "on-click-right": "playerctl --player=firefox next",
-        "on-scroll-up": "playerctl --player=firefox next",
-        "on-scroll-down": "playerctl --player=firefox previous",
-        "max-length": 50
-    },
-    "custom/mediaplayer": {
-        "exec": "/home/samuel/.config/waybar/scripts/mediaplayer --player spotify", 
-        "return-type": "json",
-        "format": "{}", 
-        "max-length": 40,
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl next",
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous"
-    },
-
-    "group/logout": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 300,
-            "transition-left-to-right": true
-        },
-        "modules": [
-            "custom/arrow-right",
-            "custom/logout"
-        ]
-    },
-
-    "custom/arrow-left": {
-        "format": "  ",
-        "tooltip": false
-    },
-
-
-    "custom/arrow-right": {
-        "format": "  ",
-        "tooltip": false
-    },
-
-    "custom/logout": {
-        "format": "󰍃 logout menu",
-        "tooltip": false,
-        "on-click": "wlogout"
-    },
-
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon}",
-        "format-icons": [
-            "󰂃",
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰂂",
-            "󰁹"
-        ]
-    },
-
-    "group/info": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 300,
-            "transition-left-to-right": true
-        },
-        "modules": [
-            "custom/arrow-left",
-            "disk",
-            "memory",
-            "cpu",
-            "battery"
-        ]
-    },
-    "disk": {
-        "interval": 30,
-        "path": "/",
-        "states": {
-            "c": 90,
-            "h": 70,
-            "m": 40
-        },
-        "format": "󰋊 {used} / {total}",
-        "format-m": "󰋊 {percentage}%",
-        "format-h": "󰋊 {percentage}%",
-        "format-c": "󰋊 {percentage}%",
-        "format-alt": "󰋊 {free} free",
-        "tooltip": true,
-        "tooltip-format": "Disk usage:\nPath: <b>{path}</b>\nUsed: <b>{used}</b>\nFree: <b>{free}</b>\nTotal: <b>{total}</b>\nUsage: <b>{percentage}%</b>"
-    },
-    "memory": {
-        "states": {
-            "c": 90,
-            "h": 60,
-            "m": 30
-        },
-        "interval": 10,
-        "format": "  {used} GiB",
-        "format-m": "󰾅 {percentage}%",
-        "format-h": "󰓅 {percentage}%",
-        "format-c": " {percentage}%",
-        "format-alt": "󰾆 {percentage}%",
-        "tooltip": true,
-        "tooltip-format": "󰾆 {percentage}%\n  {used:0.1f} GiB / {total:0.1f} GiB"
+      },
+      "on-click": "chromium --app=https://calendar.google.com & aplay ~/.config/sounds/interact.wav"
     },
 
     "cpu": {
-        "interval": 10,
-        "format": "󰍛 {usage}%",
-        "format-alt": "{icon0}{icon1}{icon2}{icon3}",
-        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+      "interval": 4,
+      "format": " {usage}%",
+      "states": {
+        "warning": 80,
+        "critical": 95
+      }
     },
 
-    "network": {
-        "tooltip": true,
-        "format-wifi": "  {essid}",
-        "format-ethernet": "󰈀 ",
-        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
-        "format-linked": "󰈀 ",
-        "format-disconnected": "󰖪 ",
-        "tooltip-format-disconnected": "Disconnected",
-        "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span>  <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
-        "interval": 2
+    "hyprland/language": {
+      "format": " {}",
+      "format-fi": "Vittu",
+      "format-ru": "Блять",
+      "min-length": 8,
+      "on-click": "hyprctl switchxkblayout current next & aplay ~/.config/sounds/interact.wav",
+      "tooltip": false,
+      "class": "language"
+    },
+
+    "memory#ram": {
+      "interval": 4,
+      "format": " {percentage}%",
+      "states": {
+        "warning": 80,
+        "critical": 95
+      },
+      "tooltip": "{}",
+      "tooltip-format": "{used}/{total} GiB"
+    },
+
+    "memory#swap": {
+      "interval": 16,
+      "format": "󰾵 {swapPercentage}%",
+      "tooltip": "{}",
+      "tooltip-format": "{swapUsed}/{swapTotal}GiB"
+    },
+
+    "network#info": {
+      "interval": 2,
+      "format": "󱘖  Offline",
+      "format-wifi": "{icon} {bandwidthDownBits}",
+      "format-ethernet": "󰈀 {bandwidthDownBits}",
+      "min-length": 11,
+      "tooltip": "{}",
+      "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
+      "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
+      "on-click": "iwgtk& aplay ~/.config/sounds/interact.wav",
+      "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
+      "states": {
+        "normal": 25
+      }
+    },
+
+    "network#up": {
+      "interval": 4,
+      "format": " ",
+      "format-wifi": "󰕒 {bandwidthUpBits}",
+      "format-ethernet": "󰕒 {bandwidthUpBits}",
+      "format-disconnected": " ",
+      "min-length": 11
+    },
+
+    "network#down": {
+      "interval": 4,
+      "format": "󰇚 {bandwidthDownBits}",
+      "format-wifi": "󰇚 {bandwidthDownBits}",
+      "format-ethernet": "󰇚 {bandwidthDownBits}",
+      "min-length": 11
+    },
+
+    "hyprland/submap": {
+      "always-on": true,
+      "default-submap": "",
+      "format": "{}",
+      "format-RESIZE": "{}lol",
+      "tooltip": false
+    },
+
+    "hyprland/window": {
+      "format": "{title}",
+      "max-length": 48,
+      "tooltip": false,
+      "icon": true,
+      "icon-size": 18,
+      "tooltip": true
+    },
+
+    "hyprland/workspaces": {
+      "disable-scroll-wraparound": true,
+      "smooth-scrolling-threshold": 4,
+      "enable-bar-scroll": true,
+      "format": "{icon}",
+      "show-special": true,
+      "special-visible-only": false,
+      "format-icons": {
+        "magic": "",
+        "10": "󰊴",
+        "lock": ""
+      }
+    },
+
+    "pulseaudio#output": {
+      "format": "{icon} {volume}%",
+      "format-bluetooth": "{icon} {volume}%",
+      "format-source-muted": "{volume}",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", ""]
+      },
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "on-click-right": "pwvucontrol & aplay ~/.config/sounds/interact.wav",
+      "on-scroll-down": "sh -c 'vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP \"\\d+(?=%)\" | head -1); if [ \"$vol\" -lt 100 ]; then pactl set-sink-volume @DEFAULT_SINK@ +2%; else pactl set-sink-volume @DEFAULT_SINK@ 110%; fi'",
+      "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+      "tooltip": true,
+      "scroll-step": 4
+    },
+
+    "pulseaudio#input": {
+      "format": " {format_source}%",
+      "format-source": "{volume}",
+      "format-source-muted": "{volume}",
+      "on-scroll-down": "sh -c 'vol=$(pactl get-source-volume @DEFAULT_SOURCE@ | grep -oP \"\\d+(?=%)\" | head -1); if [ \"$vol\" -lt 100 ]; then pactl set-source-volume @DEFAULT_SOURCE@ +2%; else pactl set-source-volume @DEFAULT_SOURCE@ 110%; fi'",
+      "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ -2%",
+      "max-volume": "100",
+      "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+      "on-click-right": "pwvucontrol & aplay ~/.config/sounds/interact.wav",
+      "tooltip-format": "{source_desc}",
+      "scroll-step": 4
+    },
+
+    "temperature": {
+      "critical-threshold": 90,
+      "interval": 4,
+      "format": "{icon} {temperatureC}°",
+      "format-icons": ["", "", "", "", ""],
+      "tooltip": false
+    },
+
+    "tray": {
+      "icon-size": 18,
+      "spacing": 8
+    },
+
+    "custom/spacer": {
+      "format": " ",
+      "tooltip": false
+    },
+
+    "custom/spacer1": {
+      "format": "",
+      "tooltip": false
+    },
+
+    "custom/spacer2": {
+      "format": "",
+      "tooltip": false
+    },
+
+    "custom/spacer3": {
+      "format": "",
+      "tooltip": false
+    },
+
+    "custom/spacer4": {
+      "format": "",
+      "tooltip": false
+    },
+
+    "custom/spacer5": {
+      "format": "",
+      "tooltip": false
+    },
+
+    "custom/spacer6": {
+      "format": "",
+      "tooltip": false
+    },
+
+    "custom/trayicon": {
+      // "format": " ",
+      // "format": "Zäni",
+      // "format": "󰣇 ",
+      // "format": " ",
+      "format": "ᗧ ",
+      "tooltip": false,
+      "on-click": " bash ~/.config/scripts/pacman.sh",
+      "on-scroll-up": "",
+      "on-scroll-down": ""
     }
-}
+  },
+]

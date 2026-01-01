@@ -457,7 +457,7 @@
 /* Tooltip */
 /* {{{ */
 tooltip {
-  background: @background;
+  background: @background1;
   border: 3px solid @caution;
   border-radius: 8px;
   font-weight: 500;

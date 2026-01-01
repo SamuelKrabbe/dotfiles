@@ -80,10 +80,10 @@
     },
 
     "custom/weather": {
-        "exec": "~/scripts/shell_scripts/check-weather.sh",
+        "exec": "sh -c 'wttrbar --nerd --location \"Campo_Grande,BR\"'",
         "return-type": "json",
-        "interval": 60,
         "format": "{text}°",
+        "interval": 60,
         "tooltip": true
     },
 

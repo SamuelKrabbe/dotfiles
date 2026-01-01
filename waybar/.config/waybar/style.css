@@ -102,6 +102,8 @@
 #waybar.main #custom-weather,
 #waybar.main #custom-weather,
 #waybar.main #custom-mom,
+#waybar.main #custom-arrow-left,
+#waybar.main #custom-arrow-right,
 #waybar.main #keyboard-state,
 #waybar.main #network,
 #waybar.main #clock,
@@ -136,6 +138,8 @@
 #waybar.main #custom-nvidia,
 #waybar.main #cpu,
 #waybar.main #temperature,
+#waybar.main #custom-arrow-left,
+#waybar.main #custom-arrow-right,
 #waybar.main #memory.ram,
 #waybar.main #memory.swap,
 #waybar.main #disk,
@@ -275,7 +279,7 @@
   padding-right: 4px;
   margin-top: -6px;
   margin-bottom: -6px;
-  margin-left: 5px;
+  /* margin-left: 5px; */
   background-image: linear-gradient(-243.435deg,
       @background2 17px,
       @sepepator 17px,
@@ -435,17 +439,17 @@
 /* Custom tray icon */
 /* {{{ */
 #waybar.main #custom-trayicon {
-  font-size: 11pt;
-  color: transparent;
+  font-size: 14pt;
+  color: #1793D1;
   /* font-weight: bold; */
-  font-style: italic;
-  background: transparent;
+  /* font-style: italic; */
+  /* background: transparent; */
   padding-right: 0pt;
-  padding-left: 2pt;
-  background-size: 16px;
-  background-position: 2px, 0px;
-  background-repeat: no-repeat;
-  background-image: url("/home/jan-aarela/.config/hypr/themes/Mocha-Power/pacman.png");
+  padding-left: 10pt;
+  /* background-size: 16px; */
+  /* background-position: 2px, 0px; */
+  /* background-repeat: no-repeat; */
+  /* background-image: url("/home/jan-aarela/.config/hypr/themes/Mocha-Power/pacman.png"); */
 }
 
 /* }}} */

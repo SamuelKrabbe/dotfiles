@@ -76,7 +76,7 @@
 /* {{{ */
 #waybar.main {
   background: @background2;
-  font-family: "JetBrainsMono Nerd Font propo";
+  font-family: "JetBrainsMono Nerd Font", monospace;
   font-size: 12pt;
   font-weight: 600;
   color: @text;

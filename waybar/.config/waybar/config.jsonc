@@ -13,33 +13,31 @@
     "modules-left": [
         "custom/trayicon",
       // "custom/spacer5",
-      "hyprland/workspaces",
+      "hyprland/workspaces"
       // "custom/spacer2",
       // "custom/spacer6",
       // "hyprland/submap",
-      "hyprland/window"
+      // "hyprland/window"
     ],
-
+    "modules-center": [
+        "clock"
+        // "custom/weather",
+    ],
     "modules-right": [
         "custom/spacer1",
         "group/storage",
         "custom/nvidia",
         "cpu",
-        "temperature",
-      // "memory#ram",
-      // "memory#swap",
-      // "disk",
-      "network#info",
+        // "temperature",
+      // "network#info",
       "custom/spacer2",
       "pulseaudio#input",
       "pulseaudio#output",
       "custom/headsetbattery",
       "custom/spacer3",
-      "custom/mom",
-      "hyprland/language",
-      "custom/spacer4",
-      "custom/weather",
-      "clock"
+      "custom/mom"
+      // "hyprland/language",
+      // "custom/spacer4"
     ],
 
     // Modules
@@ -129,7 +127,8 @@
 
     "clock": {
         "interval": 1,
-        "format": " {:%H:%M:%S    %a, %d %b %Y}",
+        "format": " {:%H:%M:%S}",
+        "format-alt": " {:%H:%M:%S    %a, %d %b %Y}",
         "tooltip-format": "{calendar}",
         "calendar": {
             "weeks-pos": "left",
@@ -141,8 +140,8 @@
                 "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
                 "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
             }
-        },
-        "on-click": "chromium --app=https://calendar.google.com & aplay ~/.config/sounds/interact.wav"
+        }
+        // "on-click": "chromium --app=https://calendar.google.com & aplay ~/.config/sounds/interact.wav"
     },
 
     "cpu": {
@@ -261,23 +260,23 @@
         },
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pwvucontrol & aplay ~/.config/sounds/interact.wav",
-        "on-scroll-down": "sh -c 'vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP \"\\d+(?=%)\" | head -1); if [ \"$vol\" -lt 100 ]; then pactl set-sink-volume @DEFAULT_SINK@ +2%; else pactl set-sink-volume @DEFAULT_SINK@ 110%; fi'",
-        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+        "on-scroll-up": "sh -c 'vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP \"\\d+(?=%)\" | head -1); if [ \"$vol\" -lt 100 ]; then pactl set-sink-volume @DEFAULT_SINK@ +2%; else pactl set-sink-volume @DEFAULT_SINK@ 110%; fi'",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
         "tooltip": true,
-        "scroll-step": 4
+        "scroll-step": 5
     },
 
     "pulseaudio#input": {
         "format": " {format_source}%",
         "format-source": "{volume}",
         "format-source-muted": "{volume}",
-        "on-scroll-down": "sh -c 'vol=$(pactl get-source-volume @DEFAULT_SOURCE@ | grep -oP \"\\d+(?=%)\" | head -1); if [ \"$vol\" -lt 100 ]; then pactl set-source-volume @DEFAULT_SOURCE@ +2%; else pactl set-source-volume @DEFAULT_SOURCE@ 110%; fi'",
-        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ -2%",
         "max-volume": "100",
         "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-click-right": "pwvucontrol & aplay ~/.config/sounds/interact.wav",
+        "on-scroll-up": "sh -c 'vol=$(pactl get-source-volume @DEFAULT_SOURCE@ | grep -oP \"\\d+(?=%)\" | head -1); if [ \"$vol\" -lt 100 ]; then pactl set-source-volume @DEFAULT_SOURCE@ +2%; else pactl set-source-volume @DEFAULT_SOURCE@ 110%; fi'",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%",
         "tooltip-format": "{source_desc}",
-        "scroll-step": 4
+        "scroll-step": 5
     },
 
     "temperature": {

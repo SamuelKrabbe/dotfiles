@@ -29,7 +29,7 @@
         "custom/nvidia",
         "cpu",
         // "temperature",
-      // "network#info",
+      "network#info",
       "custom/spacer2",
       "pulseaudio#input",
       "pulseaudio#output",

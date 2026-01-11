@@ -25,17 +25,17 @@
     ],
     "modules-right": [
         "custom/spacer1",
-        "group/storage",
+        // "group/storage",
         "custom/nvidia",
         "cpu",
+        // "network#info",
         // "temperature",
-      "network#info",
-      "custom/spacer2",
-      "pulseaudio#input",
-      "pulseaudio#output",
-      "custom/headsetbattery",
-      "custom/spacer3",
-      "custom/mom"
+        "custom/spacer2",
+        "pulseaudio#input",
+        "pulseaudio#output",
+        "custom/headsetbattery",
+        "custom/spacer3",
+        "custom/mom"
       // "hyprland/language",
       // "custom/spacer4"
     ],

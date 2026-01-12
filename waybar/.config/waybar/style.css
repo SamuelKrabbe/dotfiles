@@ -1,51 +1,8 @@
 /* vim:fileencoding=utf-8:foldmethod=marker
 */
 
-/* Define colors */
-/* {{{ */
-@define-color background1 rgba(32, 32, 48, 1);
-@define-color background2 rgba(21, 21, 32, 1);
-@define-color sepepator #313244;
-@define-color warning #f38ba8;
-@define-color caution #45475a;
-@define-color performance #f5c2e7;
-@define-color audio #cba6f7;
-@define-color misc #94e2d5;
-@define-color date #a6e3a1;
-@define-color work #b4befe;
-@define-color window #b4befe;
-@define-color resize #eba0ac;
-@define-color process #89b4fa;
-@define-color text #000000;
-
-/* Mocha */
-@define-color rosewater #f5e0dc;
-@define-color flamingo #f2cdcd;
-@define-color pink #f5c2e7;
-@define-color mauve #cba6f7;
-@define-color red #f38ba8;
-@define-color maroon #eba0ac;
-@define-color peach #fab387;
-@define-color yellow #f9e2af;
-@define-color green #a6e3a1;
-@define-color teal #94e2d5;
-@define-color sky #89dceb;
-@define-color sapphire #74c7ec;
-@define-color blue #89b4fa;
-@define-color lavender #b4befe;
-@define-color text #cdd6f4;
-@define-color subtext1 #bac2de;
-@define-color subtext0 #a6adc8;
-@define-color overlay2 #9399b2;
-@define-color overlay1 #7f849c;
-@define-color overlay0 #6c7086;
-@define-color surface2 #585b70;
-@define-color surface1 #45475a;
-@define-color surface0 #313244;
-@define-color base #1e1e2e;
-@define-color mantle #181825;
-@define-color crust #11111b;
-/* }}} */
+@import 'colors/base.css';
+@import 'colors/catppuccin-mocha.css';
 
 /* Reset all styles */
 /* {{{ */
@@ -104,7 +61,7 @@
 /* {{{ */
 #waybar.main {
   background: @background2;
-  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-family: "JetBrainsMono Nerd Font Propo", sans-serif;
   font-size: 12pt;
   font-weight: 600;
   color: @text;
@@ -132,6 +89,7 @@
 #waybar.main #custom-mom,
 #waybar.main #custom-arrow-left,
 #waybar.main #custom-arrow-right,
+#waybar.main #custom-notification,
 #waybar.main #keyboard-state,
 #waybar.main #network,
 #waybar.main #clock,
@@ -157,6 +115,12 @@
 #waybar.main #custom-nvidia {
   margin-top: -4px;
   margin-bottom: -4px;
+}
+
+#waybar.main #custom-notification {
+  font-family: "JetBrainsMono Nerd Font";
+  margin-right: 10pt;
+  background: @background2;
 }
 
 /* }}} */

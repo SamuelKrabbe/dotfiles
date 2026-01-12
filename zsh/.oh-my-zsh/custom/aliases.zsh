@@ -18,3 +18,11 @@ alias notify-mom="~/scripts/shell_scripts/notify-mom.sh"
 alias system-maintenance="~/scripts/shell_scripts/system-maintenance.sh"
 alias check-moms-pc="~/scripts/shell_scripts/check-moms-pc.sh"
 alias celar="clear"
+
+zzed() {
+  exec command zed "$@"
+}
+
+zed() {
+  exec command zed "$@"
+}

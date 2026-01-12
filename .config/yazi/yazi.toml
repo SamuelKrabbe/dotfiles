@@ -1,0 +1,54 @@
+[mgr]
+linemode = "size_and_mtime"
+show_hidden = false
+
+[tasks]
+  image_alloc      = 1073741824        # = 1024*1024*1024 = 1024MB
+
+[opener]
+pdf = [
+    { run = 'zathura "$@"', desc = "Open PDF", block = false, orphan = true, for = "unix" }
+]
+
+office = [
+    { run = 'onlyoffice-desktopeditors "$@"', desc = "Open Office Docs", block = false, orphan = true, for = "unix" }
+]
+
+play = [
+    { run = 'mpv "$@"', orphan = true, for = "unix" },
+]
+
+edit = [
+    { run = "sh -c 'exec \"${EDITOR:-nvim}\" %s'", block = true, for = "unix" },
+]
+
+# open = [
+#     { run = 'xdg-open "$@"', desc = "Open" }
+# ]
+
+[open]
+prepend_rules = [
+    { name = "*.pdf",  use = "pdf" },
+
+    # Office formats → ONLYOFFICE
+    { name = "*.doc",  use = "office" },
+    { name = "*.docx", use = "office" },
+    { name = "*.xls",  use = "office" },
+    { name = "*.xlsx", use = "office" },
+    { name = "*.ppt",  use = "office" },
+    { name = "*.pptx", use = "office" },
+    { name = "*.odt",  use = "office" },
+    { name = "*.ods",  use = "office" },
+    { name = "*.odp",  use = "office" },
+
+    { mime = "video/*", use = "play" },
+    { mime = "text/*", use = "edit" },
+    { name = "*.rs", use = "edit" },
+    { name = "*.go", use = "edit" },
+    { name = "*.c", use = "edit" },
+    { name = "*.h", use = "edit" },
+    { name = "*.cpp", use = "edit" },
+    { name = "*.py", use = "edit" },
+    { name = "*.js", use = "edit" },
+    { name = "*.ts", use = "edit" },
+]

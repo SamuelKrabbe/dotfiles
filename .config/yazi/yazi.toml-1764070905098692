@@ -1,0 +1,9 @@
+[opener]
+pdf = [
+  { run = "zathura \"$1\"", desc = "Open with Zathura", block = false, for = "unix" }
+]
+
+[manager]
+openers = [
+  { name = "pdf", extensions = ["pdf"] }
+]

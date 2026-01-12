@@ -1,0 +1,76 @@
+{
+"button-text": "Clear"
+},
+
+
+"dnd": {
+"text": "Do Not Disturb"
+},
+
+
+"notifications": {
+"vexpand": true
+},
+
+
+"inhibitors": {
+"text": "Inhibitors",
+"clear-all-button": true,
+"button-text": "Clear"
+},
+
+
+"volume": {
+"label": "󰕾",
+"show-per-app": true,
+"show-per-app-icon": true
+},
+
+
+"backlight": {
+"label": "󰃠",
+"device": "intel_backlight",
+"subsystem": "backlight",
+"min": 5
+},
+
+
+"mpris": {
+"image-size": 110,
+"image-radius": 14,
+"autohide": true,
+"blacklist": ["org.mpris.MediaPlayer2.playerctld"]
+},
+
+
+"buttons-grid": {
+"buttons-per-row": 4,
+"actions": [
+{ "label": "󰍁", "type": "command", "command": "hyprlock" },
+{ "label": "󰗼", "type": "command", "command": "hyprctl dispatch exit" },
+{ "label": "󰜉", "type": "command", "command": "systemctl reboot" },
+{ "label": "󰐥", "type": "command", "command": "systemctl poweroff" },
+
+
+{
+"label": "󰤥",
+"type": "toggle",
+"command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
+"update-command": "sh -c '[[ $(nmcli radio wifi) == enabled ]] && echo true || echo false'"
+},
+{
+"label": "󰂯",
+"type": "toggle",
+"command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && bluetoothctl power on || bluetoothctl power off'",
+"update-command": "bluetoothctl show | grep -q Powered: && echo true || echo false"
+},
+{
+"label": "",
+"type": "toggle",
+"command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && hyprctl dispatch exec hyprsunset --temperature 6000 || pkill -INT hyprsunset'",
+"update-command": "pgrep -x hyprsunset >/dev/null && echo true || echo false"
+}
+]
+}
+}
+}

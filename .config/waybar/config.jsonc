@@ -1,77 +1,115 @@
 {
     "layer": "top",
-    "output": [
-        "*"
-    ],
-    "height": 10,
-    "exclusive": true,
-    "passthrough": false,
-    "reload_style_on_change": true,
-    "include": [
-        "$XDG_CONFIG_HOME/waybar/modules/*json*", 
-        "$XDG_CONFIG_HOME/waybar/includes/includes.json" 
-    ],
+    "position": "top",
+    "height": 24,
+    "spacing": 5,
+
     "modules-left": [
-        "group/pill#left1",
-        "group/pill#left2"
+        "niri/workspaces"
     ],
-    "group/pill#left1": {
-        "orientation": "inherit",
-        "modules": [
-            "cpu",
-            "memory"
-        ]
-    },
-    "group/pill#left2": {
-        "orientation": "inherit",
-        "modules": [
-            "idle_inhibitor",
-            "clock"
-        ]
-    },
     "modules-center": [
-        "group/pill#center"
+        "clock"
     ],
-    "group/pill#center": {
-        "modules": [
-            "hyprland/workspaces",
-            "hyprland/window"
-        ],
-        "orientation": "inherit"
-    },
     "modules-right": [
-        "group/pill#right1",
-        "group/pill#right2",
-        "group/pill#right3"
+        "wireplumber",
+        "custom/power-profile",
+        "idle_inhibitor",
+        // "network",
+        "bluetooth",
+        "tray"
     ],
-    "group/pill#right1": {
-        "modules": [
-            "backlight",
-            "network",
-            "pulseaudio",
-            "pulseaudio#microphone",
-            "custom/updates",
-            "custom/keybindhint"
-        ],
-        "orientation": "inherit"
+
+    "niri/workspaces": {
+        "format": "<span size='larger'>{icon}</span>",
+        "on-click": "activate",
+        "format-icons": {
+            "active": "\uf444",
+            "default": "\uf4c3"
+        }
     },
-    "group/pill#right2": {
-        "modules": [
-            "privacy",
-            "tray",
-            "battery"
-        ],
-        "orientation": "inherit"
+
+    "clock": {
+        "format": "{:%b %d | %R}",
+        "format-alt": "{:%A, %B %d, %Y | %R | GMT %Z} ",
+        "interval": 60
     },
-    "group/pill#right3": {
-        "modules": [
-            "custom/wallchange",
-            "custom/theme",
-            "custom/wbar",
-            "custom/cliphist",
-            "custom/hyde-menu",
-            "custom/power"
-        ],
-        "orientation": "inherit"
+
+    "wireplumber": {
+        "format": "{icon}",
+        "format-muted": "󰝟",
+
+        "format-icons": {
+            "default": [
+                "󰕿",  // low
+                "󰖀",  // medium
+                "󰕾"   // high
+            ]
+        },
+
+        "scroll-step": 5,
+        "max-volume": 100,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip": true,
+        "tooltip-format": "{node_name}\nVolume: {volume}%"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "\uf4bc  {used:0.1f}G"
+    },
+
+    "temperature": {
+        "format": "{temperatureC}°C"
+    },
+
+    "network": {
+        "format": "",
+        "format-ethernet": "\udb83\udc9d",
+        "format-wifi": "{icon}",
+        "format-disconnected": "\udb83\udc9c",
+        "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected"
+    },
+
+    "bluetooth": {
+        "format": "\udb80\udcaf",
+        "format-disabled": "\udb80\udcb2",
+        "format-connected": "\udb80\udcb1",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 16
+    },
+
+    "custom/power-profile": {
+        "exec": "~/.config/waybar/scripts/power-profile.sh",
+        "interval": 2,
+        "return-type": "json",
+
+        "format": "{icon}",
+        "tooltip": true,
+
+        "format-icons": {
+            "performance": "󰓅",   // rocket / speed
+            "balanced": "󰈐",      // sliders / balance
+            "power-saver": "󰌪",   // leaf / eco
+            "default": "󰍛"
+        },
+
+        "on-click": "~/.config/waybar/scripts/power-profile.sh toggle"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "\udb80\udd76",
+            "deactivated": "\udb83\udfaa"
+        }
     }
 }

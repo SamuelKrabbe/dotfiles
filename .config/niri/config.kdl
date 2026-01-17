@@ -161,7 +161,7 @@ binds {
     Mod+A hotkey-overlay-title="Run an Application Launcher: rofi" { spawn-sh "rofi -show drun"; }
     Mod+D hotkey-overlay-title="Open a File Explorer: yazi" { spawn-sh "kitty -e yazi"; }
     Mod+B hotkey-overlay-title="Open a Browser: firefox" { spawn "firefox"; }
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    Mod+Alt+R hotkey-overlay-title="Open a Browser: firefox" { spawn-sh "~/dotfiles/.config/waybar/scripts/launch-waybar.sh"; }
 
 
     // Example volume keys mappings for PipeWire & WirePlumber.

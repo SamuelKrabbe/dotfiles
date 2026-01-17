@@ -13,9 +13,8 @@
     "modules-right": [
         "wireplumber",
         "custom/power-profile",
-        "idle_inhibitor",
-        // "network",
         "bluetooth",
+        "idle_inhibitor",
         "tray"
     ],
 
@@ -58,28 +57,40 @@
         "format": "\uf4bc  {used:0.1f}G"
     },
 
-    "temperature": {
-        "format": "{temperatureC}°C"
-    },
-
     "network": {
-        "format": "",
-        "format-ethernet": "\udb83\udc9d",
+        "format": "{icon}",
         "format-wifi": "{icon}",
-        "format-disconnected": "\udb83\udc9c",
-        "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": "{ifname}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤮",
+
+        "format-icons": [
+            "󰤯",  // very low
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"   // excellent
+        ],
+
+        "tooltip": true,
+        "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%",
+        "tooltip-format-ethernet": "Ethernet: {ifname}",
         "tooltip-format-disconnected": "Disconnected"
     },
 
     "bluetooth": {
-        "format": "\udb80\udcaf",
-        "format-disabled": "\udb80\udcb2",
-        "format-connected": "\udb80\udcb1",
-        "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+        "format": "{icon}",
+        "tooltip": true,
+
+        "format-icons": {
+            "enabled": "󰂯",
+            "disabled": "󰂲",
+            "connected": "󰂱",
+            "default": "󰂯"
+        },
+
+        "tooltip-format": "{controller_alias}",
+        "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "• {device_alias}"
     },
 
     "tray": {

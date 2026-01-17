@@ -1,20 +1,25 @@
 #!/usr/bin/env bash
 
-# Parse command line arguments
+# =========================
+# User-configurable flags
+# =========================
 DEV_ONLY=false
+INSTALL_FLATPAK=true
+
+# Parse command line arguments
 while [[ "$#" -gt 0 ]]; do
   case $1 in
-    --dev-only) DEV_ONLY=true; shift ;;
+    --dev-only) DEV_ONLY=true ;;
+    --no-flatpak) INSTALL_FLATPAK=false ;;
     *) echo "Unknown parameter: $1"; exit 1 ;;
   esac
+  shift
 done
 
 clear
 
-# Source utility functions
 source utils.sh
 
-# Source the package list
 if [ ! -f "packages.conf" ]; then
   echo "Error: packages.conf not found!"
   exit 1
@@ -28,11 +33,9 @@ else
   echo "Starting full system setup..."
 fi
 
-# Update the system first
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
 
-# Install yay AUR helper if not present
 if ! command -v yay &> /dev/null; then
   echo "Installing yay AUR helper..."
   sudo pacman -S --needed git base-devel --noconfirm
@@ -59,32 +62,42 @@ if [[ "$DEV_ONLY" == true ]]; then
   # Only install essential development packages
   echo "Installing system utilities..."
   install_packages "${SYSTEM_UTILS[@]}"
-  
+
   echo "Installing development tools..."
   install_packages "${DEV_TOOLS[@]}"
+
 else
   # Install all packages
   echo "Installing system utilities..."
   install_packages "${SYSTEM_UTILS[@]}"
-  
+
   echo "Installing development tools..."
   install_packages "${DEV_TOOLS[@]}"
-  
-  echo "Installing system maintenance tools..."
-  install_packages "${MAINTENANCE[@]}"
-  
-  echo "Installing desktop environment..."
+
+  echo "Installing GUI utilities..."
+  install_packages "${UTILS[@]}"
+
+  echo "Installing file managers..."
+  install_packages "${FILE_MANAGERS[@]}"
+
+  echo "Installing audio and video packages..."
+  install_packages "${AUDIO_VIDEO[@]}"
+
+  echo "Installing screen and recording tools..."
+  install_packages "${SCREEN[@]}"
+
+  echo "Installing UX / Wayland helpers..."
+  install_packages "${UX[@]}"
+
+  echo "Installing desktop components..."
   install_packages "${DESKTOP[@]}"
-  
-  echo "Installing desktop environment..."
-  install_packages "${OFFICE[@]}"
-  
-  echo "Installing media packages..."
-  install_packages "${MEDIA[@]}"
-  
+
   echo "Installing fonts..."
   install_packages "${FONTS[@]}"
-  
+
+  echo "Installing network tools..."
+  install_packages "${NETWORK[@]}"
+
   # Enable services
   echo "Configuring services..."
   for service in "${SERVICES[@]}"; do
@@ -95,17 +108,9 @@ else
       echo "$service is already enabled"
     fi
   done
-  
-  # Install gnome specific things to make it like a tiling WM
-  echo "Installing Gnome extensions..."
-  . gnome/gnome-extensions.sh
-  echo "Setting Gnome hotkeys..."
-  . gnome/gnome-hotkeys.sh
-  echo "Configuring Gnome..."
-  . gnome/gnome-settings.sh
-  
-  # Some programs just run better as flatpaks. Like discord/spotify
-  echo "Installing flatpaks (like discord and spotify)"
+
+  # Some programs just run better as flatpaks (e.g. Discord, Spotify)
+  echo "Installing flatpaks..."
   . install-flatpaks.sh
 fi
 

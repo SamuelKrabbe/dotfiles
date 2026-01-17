@@ -1,376 +1,77 @@
 {
     "layer": "top",
-    "position": "top",
-    "name": "main",
-    "height": 28,
+    "output": [
+        "*"
+    ],
+    "height": 10,
+    "exclusive": true,
+    "passthrough": false,
     "reload_style_on_change": true,
-    "margin-top": 5,
-    "margin-left": 3,
-    "margin-right": 3,
-    "margin-bottom": 2,
-
+    "include": [
+        "$XDG_CONFIG_HOME/waybar/modules/*json*", 
+        "$XDG_CONFIG_HOME/waybar/includes/includes.json" 
+    ],
     "modules-left": [
-        "group/traym",
-      // "custom/spacer5",
-      "hyprland/workspaces"
-      // "custom/spacer2",
+        "group/pill#left1",
+        "group/pill#left2"
     ],
-    "modules-center": [
-        "clock"
-        // "custom/weather",
-    ],
-    "modules-right": [
-        "custom/spacer1",
-        // "group/storage",
-        "custom/nvidia",
-        "cpu",
-        // "network#info",
-        // "temperature",
-        "custom/spacer2",
-        "pulseaudio#input",
-        "pulseaudio#output",
-        "custom/headsetbattery",
-        "custom/notification"
-    ],
-
-    // Modules
-    "disk": {
-        "interval": 16,
-        "format": " {percentage_used}%",
-        "tooltip": "{}",
-        "tooltip-format": "Free {free}",
-        "on-click": "qdirstat & aplay ~/.config/sounds/interact.wav",
-        "states": {
-            "warning": 85,
-            "critical": 95
-        }
-    },
-
-    "cava": {
-        // "cava_config": "~/.config/picom.conf",
-        "framerate": 30,
-        "autosens": 0,
-        "sensitivity": 30,
-        "bars": 16,
-        "lower_cutoff_freq": 20,
-        "higher_cutoff_freq": 20000,
-        "hide_on_silence": true,
-        // "format_silent": "quiet",
-        "method": "pipewire",
-        "source": "auto",
-        "stereo": false,
-        "reverse": false,
-        "bar_delimiter": 0,
-        "monstercat": false,
-        "waves": false,
-        "noise_reduction": 0.2,
-        "input_delay": 2,
-        "sleep_timer": 5,
-        // "format-icons": ["▁","▁","▁","▁","▁","▁","▁","▁","▁","▁","▁","▁","▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-        "format-icons": ["⡀","⡀","⡄","⡆","⡇"]
-    },
-
-    "custom/weather": {
-        "exec": "sh -c 'wttrbar --nerd --location \"Campo_Grande,BR\"'",
-        "return-type": "json",
-        "format": "{text}°",
-        "interval": 60,
-        "tooltip": true
-    },
-
-    "group/traym": {
-        "orientation": "horizontal",
-        "drawer": {},
-        "modules": ["custom/trayicon", "tray"]
-    },
-
-    "group/storage": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": "500",
-            "transition-left-to-right": "true",
-            "children-class": "drawer-child"
-        //"click-to-reveal": "false"
-        },
+    "group/pill#left1": {
+        "orientation": "inherit",
         "modules": [
-            "custom/arrow-left",
-            "disk",
-            "memory#ram", 
-            "memory#swap"
+            "cpu",
+            "memory"
         ]
     },
-
-    "custom/nvidia": {
-        "interval": 4,
-        "return-type": "json",
-        "exec": "~/scripts/shell_scripts/nvidia-status.sh",
-        "format": "<span size='x-large' rise='-2500'>󰢮</span>{text}",
-        "tooltip": "true",
-        "tooltip-format": "{alt}"
+    "group/pill#left2": {
+        "orientation": "inherit",
+        "modules": [
+            "idle_inhibitor",
+            "clock"
+        ]
     },
-
-    "custom/mom": {
-        "interval": 5,
-        "return-type": "json",
-        "tooltip": true,
-        "tooltip-format": "{alt}",
-        "format": "{text}",
-        "exec": "~/scripts/shell_scripts/check-moms-pc.sh"
+    "modules-center": [
+        "group/pill#center"
+    ],
+    "group/pill#center": {
+        "modules": [
+            "hyprland/workspaces",
+            "hyprland/window"
+        ],
+        "orientation": "inherit"
     },
-
-    "custom/notification": {
-        "tooltip": true,
-        "format": "<span size='16pt'>{icon}</span>",
-        "format-icons": {
-            "notification": "󱅫",
-            "none": "󰂜",
-            "dnd-notification": "󰂠",
-            "dnd-none": "󰪓",
-            "inhibited-notification": "󰂛",
-            "inhibited-none": "󰪑",
-            "dnd-inhibited-notification": "󰂛",
-            "dnd-inhibited-none": "󰪑"
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
+    "modules-right": [
+        "group/pill#right1",
+        "group/pill#right2",
+        "group/pill#right3"
+    ],
+    "group/pill#right1": {
+        "modules": [
+            "backlight",
+            "network",
+            "pulseaudio",
+            "pulseaudio#microphone",
+            "custom/updates",
+            "custom/keybindhint"
+        ],
+        "orientation": "inherit"
     },
-
-    "clock": {
-        "interval": 1,
-        "format": " {:%H:%M:%S}",
-        "format-alt": " {:%H:%M:%S    %a, %d %b %Y}",
-        "tooltip-format": "{calendar}",
-        "calendar": {
-            "weeks-pos": "left",
-            "mode": "month",
-            "format": {
-                "months": "<span color='#cba6f7'><b>{}</b></span>",
-                "days": "<span color='#cdd6f4'><b>{}</b></span>",
-                "weeks": "<span color='#94e2d5'> W{}</span>",
-                "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-                "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
-            }
-        }
-        // "on-click": "chromium --app=https://calendar.google.com & aplay ~/.config/sounds/interact.wav"
+    "group/pill#right2": {
+        "modules": [
+            "privacy",
+            "tray",
+            "battery"
+        ],
+        "orientation": "inherit"
     },
-
-    "cpu": {
-        "interval": 4,
-        "format": " {usage}%",
-        "states": {
-            "warning": 80,
-            "critical": 95
-        }
-    },
-
-    "hyprland/language": {
-        "format": " {}",
-        "format-en": "Eng",
-        "format-pt": "Por",
-        "min-length": 8,
-        "on-click": "hyprctl switchxkblayout current next & aplay ~/.config/sounds/interact.wav",
-        "tooltip": false,
-        "class": "language"
-    },
-
-    "memory#ram": {
-        "interval": 4,
-        "format": " {percentage}%",
-        "states": {
-            "warning": 80,
-            "critical": 95
-        },
-        "tooltip": "{}",
-        "tooltip-format": "{used}/{total} GiB"
-    },
-
-    "memory#swap": {
-        "interval": 16,
-        "format": "󰾵 {swapPercentage}%",
-        "tooltip": "{}",
-        "tooltip-format": "{swapUsed}/{swapTotal}GiB"
-    },
-
-    "network#info": {
-        "interval": 2,
-        "format": "󱘖  Offline",
-        "format-wifi": "{icon} {bandwidthDownBits}",
-        "format-ethernet": "󰈀 {bandwidthDownBits}",
-        "min-length": 11,
-        "tooltip": "{}",
-        "tooltip-format-wifi": "{ifname}\n{essid}\n{signalStrength}% \n{frequency} GHz\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
-        "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits} \n󰕒 {bandwidthUpBits}",
-        "on-click": "iwgtk& aplay ~/.config/sounds/interact.wav",
-        "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
-        "states": {
-            "normal": 25
-        }
-    },
-
-    "network#up": {
-        "interval": 4,
-        "format": " ",
-        "format-wifi": "󰕒 {bandwidthUpBits}",
-        "format-ethernet": "󰕒 {bandwidthUpBits}",
-        "format-disconnected": " ",
-        "min-length": 11
-    },
-
-    "network#down": {
-        "interval": 4,
-        "format": "󰇚 {bandwidthDownBits}",
-        "format-wifi": "󰇚 {bandwidthDownBits}",
-        "format-ethernet": "󰇚 {bandwidthDownBits}",
-        "min-length": 11
-    },
-
-    "hyprland/submap": {
-        "always-on": true,
-        "default-submap": "",
-        "format": "{}",
-        "format-RESIZE": "{}lol",
-        "tooltip": false
-    },
-
-    "hyprland/window": {
-        "format": "{title}",
-        "max-length": 48,
-        "tooltip": false,
-        "icon": true,
-        "icon-size": 18,
-        "tooltip": true
-    },
-
-    "hyprland/workspaces": {
-        "disable-scroll-wraparound": true,
-        "smooth-scrolling-threshold": 4,
-        "enable-bar-scroll": true,
-        "format": "{icon}",
-        "show-special": true,
-        "special-visible-only": false,
-        "on-click": "activate",
-
-        "format-icons": {
-            "1": "I",
-            "2": "II",
-            "3": "III",
-            "4": "IV",
-            "5": "V",
-            "6": "VI",
-            "7": "VII",
-            "8": "VIII",
-            "9": "IX",
-            "10": "X"
-        }
-    },
-
-    "pulseaudio#output": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
-        "format-source-muted": "{volume}",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-click-right": "pwvucontrol & aplay ~/.config/sounds/interact.wav",
-        "on-scroll-up": "sh -c 'vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP \"\\d+(?=%)\" | head -1); if [ \"$vol\" -lt 100 ]; then pactl set-sink-volume @DEFAULT_SINK@ +2%; else pactl set-sink-volume @DEFAULT_SINK@ 110%; fi'",
-        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
-        "tooltip": true,
-        "scroll-step": 5
-    },
-
-    "pulseaudio#input": {
-        "format": " {format_source}%",
-        "format-source": "{volume}",
-        "format-source-muted": "{volume}",
-        "max-volume": "100",
-        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-        "on-click-right": "pwvucontrol & aplay ~/.config/sounds/interact.wav",
-        "on-scroll-up": "sh -c 'vol=$(pactl get-source-volume @DEFAULT_SOURCE@ | grep -oP \"\\d+(?=%)\" | head -1); if [ \"$vol\" -lt 100 ]; then pactl set-source-volume @DEFAULT_SOURCE@ +2%; else pactl set-source-volume @DEFAULT_SOURCE@ 110%; fi'",
-        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%",
-        "tooltip-format": "{source_desc}",
-        "scroll-step": 5
-    },
-
-    "temperature": {
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
-        "critical-threshold": 90,
-        "interval": 5,
-        "format": "{icon} {temperatureC}°",
-        "format-icons": ["", "", "", "", ""],
-        "tooltip": false
-    },
-
-    "tray": {
-        "icon-size": 18,
-        "spacing": 8
-    },
-
-    "custom/spacer": {
-        "format": " ",
-        "tooltip": false
-    },
-
-    "custom/spacer1": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "custom/spacer2": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "custom/spacer3": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "custom/spacer4": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "custom/spacer5": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "custom/spacer6": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "custom/trayicon": {
-      // "format": " ",
-      // "format": "Zäni",
-      "format": "󰣇 ",
-      // "format": " ",
-      // "format": "ᗧ ",
-      "tooltip": false,
-      // "on-click": " bash ~/.config/scripts/pacman.sh",
-      "on-scroll-up": "",
-      "on-scroll-down": ""
-    },
-
-    "custom/arrow-left": {
-        "format": "  ",
-        "tooltip": false
-    },
-
-
-    "custom/arrow-right": {
-        "format": "  ",
-        "tooltip": false
+    "group/pill#right3": {
+        "modules": [
+            "custom/wallchange",
+            "custom/theme",
+            "custom/wbar",
+            "custom/cliphist",
+            "custom/hyde-menu",
+            "custom/power"
+        ],
+        "orientation": "inherit"
     }
 }

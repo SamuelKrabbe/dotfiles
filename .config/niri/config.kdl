@@ -159,9 +159,9 @@ binds {
 
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+A hotkey-overlay-title="Run an Application Launcher: rofi" { spawn-sh "rofi -show drun"; }
+    Mod+D hotkey-overlay-title="Open a File Explorer: yazi" { spawn-sh "kitty -e yazi"; }
     Mod+B hotkey-overlay-title="Open a Browser: firefox" { spawn "firefox"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-    // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
 
     // Example volume keys mappings for PipeWire & WirePlumber.

@@ -13,7 +13,6 @@
     "modules-right": [
         "wireplumber",
         "custom/power-profile",
-        "bluetooth",
         "idle_inhibitor",
         "tray"
     ],

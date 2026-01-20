@@ -161,7 +161,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+A hotkey-overlay-title="Run an Application Launcher: rofi" { spawn-sh "rofi -show drun"; }
+    Mod+A hotkey-overlay-title="Run an Application Launcher: rofi" { spawn-sh "~/dotfiles/.config/rofi/launchers/type-2/launcher.sh"; }
     Mod+D hotkey-overlay-title="Open a File Explorer: yazi" { spawn-sh "kitty -e yazi"; }
     Mod+B hotkey-overlay-title="Open a Browser: firefox" { spawn "firefox"; }
     Mod+Alt+R hotkey-overlay-title="Open a Browser: firefox" { spawn-sh "~/dotfiles/.config/waybar/scripts/launch-waybar.sh"; }

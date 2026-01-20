@@ -86,6 +86,9 @@ layout {
     }
 }
 
+spawn-at-startup "swww-daemon"
+spawn-at-startup "swww img ~/wallpapers/lake_and_mountains.jpg"
+
 spawn-at-startup "waybar"
 spawn-at-startup "firefox"
 

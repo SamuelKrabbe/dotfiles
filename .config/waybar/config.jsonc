@@ -11,7 +11,7 @@
         "clock"
     ],
     "modules-right": [
-        "wireplumber",
+        "pulseaudio",
         "custom/power-profile",
         "idle_inhibitor",
         "tray"
@@ -32,23 +32,17 @@
         "interval": 60
     },
 
-    "wireplumber": {
+    "pulseaudio": {
         "format": "{icon}",
         "format-muted": "󰝟",
-
         "format-icons": {
-            "default": [
-                "󰕿",  // low
-                "󰖀",  // medium
-                "󰕾"   // high
-            ]
+            "default": ["󰕿", "󰖀", "󰕾"]
         },
-
         "scroll-step": 5,
         "max-volume": 100,
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click": "pwvucontrol",
         "tooltip": true,
-        "tooltip-format": "{node_name}\nVolume: {volume}%"
+        "tooltip-format": "{desc}\nVolume: {volume}%"
     },
 
     "memory": {

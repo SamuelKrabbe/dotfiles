@@ -40,7 +40,8 @@
         },
         "scroll-step": 5,
         "max-volume": 100,
-        "on-click": "pwvucontrol",
+        "smooth-scrolling-threshold": 0,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "tooltip": true,
         "tooltip-format": "{desc}\nVolume: {volume}%"
     },

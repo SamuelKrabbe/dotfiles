@@ -38,10 +38,9 @@
         "format-icons": {
             "default": ["󰕿", "󰖀", "󰕾"]
         },
-        "scroll-step": 5,
+        "scroll-step": 0,
         "max-volume": 100,
-        "smooth-scrolling-threshold": 0,
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click": "pwvucontrol",
         "tooltip": true,
         "tooltip-format": "{desc}\nVolume: {volume}%"
     },

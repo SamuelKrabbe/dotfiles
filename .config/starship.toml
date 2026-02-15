@@ -1,0 +1,96 @@
+# =========================
+# GENERAL
+# =========================
+add_newline = true
+command_timeout = 1000
+format = """
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$python\
+$rust\
+$golang\
+$docker_context\
+$cmd_duration\
+$line_break\
+$character
+"""
+
+# =========================
+# PROMPT SYMBOL
+# =========================
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold blue)"
+
+# =========================
+# DIRECTORY
+# =========================
+[directory]
+style = "bold cyan"
+format = "[$path]($style)[$read_only]($read_only_style) "
+read_only = " 🔒"
+
+# =========================
+# GIT
+# =========================
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+style = "bold red"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+conflicted = "⚔ "
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕"
+untracked = "?${count}"
+stashed = "📦${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+
+# =========================
+# LANGUAGES
+# =========================
+[nodejs]
+symbol = " "
+style = "bold green"
+format = "[$symbol$version]($style) "
+
+[python]
+symbol = " "
+style = "bold yellow"
+format = "[$symbol$version]($style) "
+
+[rust]
+symbol = " "
+style = "bold red"
+format = "[$symbol$version]($style) "
+
+[golang]
+symbol = " "
+style = "bold cyan"
+format = "[$symbol$version]($style) "
+
+# =========================
+# DOCKER
+# =========================
+[docker_context]
+symbol = " "
+style = "bold blue"
+format = "[$symbol$context]($style) "
+only_with_files = true
+
+# =========================
+# CMD DURATION
+# =========================
+[cmd_duration]
+min_time = 2000
+format = "⏱ [$duration](bold yellow) "
+show_milliseconds = false

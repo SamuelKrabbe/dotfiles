@@ -27,3 +27,6 @@ display-inlay-hints = true
 "C-s" = ":wa"
 "C-q" = ":q"
 "C-x" = ":wq"
+
+[keys.normal.space]
+"=" = ":format"

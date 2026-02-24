@@ -8,13 +8,13 @@ font pango:JetBrains Mono 11
 floating_modifier $mod
 
 # --- No decorations ---
-default_border none
-default_floating_border none
+default_border pixel 2
+default_floating_border pixel 2
 hide_edge_borders smart
 
 # --- Gaps ---
-gaps inner 12
-gaps outer 6
+gaps inner 5
+gaps outer 3
 smart_gaps on
 smart_borders on
 
@@ -153,7 +153,7 @@ bindsym $mod+r mode "resize"
 # ============================================================
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
-exec --no-startup-id xset r rate 200 30
+exec --no-startup-id xset r rate 200 60
 exec --no-startup-id feh --bg-fill ~/wallpapers/aurora_boreal.png
 
 # ============================================================

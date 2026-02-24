@@ -153,9 +153,8 @@ bindsym $mod+r mode "resize"
 # ============================================================
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
-exec --no-startup-id xkbset bouncekeys 50
-exec --no-startup-id xkbset exp 1 =bouncekeys
-exec --no-startup-id xset r rate 200 20
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/cinnamon-settings-daemon/csd-keyboard
+exec --no-startup-id xset r rate 190 52
 exec --no-startup-id feh --bg-fill ~/wallpapers/aurora_boreal.png
 
 # ============================================================

@@ -1,0 +1,178 @@
+# ============================================================
+#  i3 config — Minimal · Catppuccin Mocha
+# ============================================================
+
+# --- Core ---
+set $mod Mod4
+font pango:JetBrains Mono 11
+floating_modifier $mod
+
+# --- No decorations ---
+default_border none
+default_floating_border none
+hide_edge_borders smart
+
+# --- Gaps ---
+gaps inner 12
+gaps outer 6
+smart_gaps on
+smart_borders on
+
+# ============================================================
+#  Catppuccin Mocha palette
+# ============================================================
+set $base     #1e1e2e
+set $mantle   #181825
+set $crust    #11111b
+set $surface0 #313244
+set $surface1 #45475a
+set $overlay0 #6c7086
+set $text     #cdd6f4
+set $subtext  #a6adc8
+set $blue     #89b4fa
+set $lavender #b4befe
+set $mauve    #cba6f7
+set $red      #f38ba8
+set $peach    #fab387
+set $green    #a6e3a1
+set $teal     #94e2d5
+set $sky      #89dceb
+
+# --- Window colors              border    bg        text      indicator child_border ---
+client.focused          $blue     $base     $text     $lavender $blue
+client.focused_inactive $surface0 $base     $subtext  $surface0 $surface0
+client.unfocused        $base     $base     $overlay0 $base     $base
+client.urgent           $red      $base     $red      $red      $red
+client.placeholder      $base     $base     $text     $base     $base
+
+# ============================================================
+#  Keybindings
+# ============================================================
+
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+b exec firefox
+bindsym $mod+e exec xdg-open ~
+bindsym $mod+d exec dmenu_run -i \
+    -nb '#1e1e2e' -nf '#a6adc8' \
+    -sb '#89b4fa' -sf '#1e1e2e' \
+    -fn 'JetBrains Mono-11'
+
+# Focus (vim + arrows)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# Move windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Split
+bindsym $mod+- split v
+bindsym $mod+| split h
+
+# Layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+t layout toggle split
+
+# Fullscreen / floating / focus toggle
+bindsym $mod+f         fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space     focus mode_toggle
+
+# Scratchpad
+bindsym $mod+minus       scratchpad show
+bindsym $mod+Shift+minus move scratchpad
+
+# Kill
+bindsym $mod+Shift+q kill
+
+# i3 control
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+
+# ============================================================
+#  Workspaces
+# ============================================================
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# ============================================================
+#  Resize mode
+# ============================================================
+mode "resize" {
+    bindsym h resize shrink width  10 px or 10 ppt
+    bindsym j resize grow   height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow   width  10 px or 10 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# ============================================================
+#  Autostart
+# ============================================================
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
+# exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg
+
+# ============================================================
+#  Bar
+# ============================================================
+bar {
+    position top
+    status_command i3status
+    tray_padding 4
+
+    colors {
+        background #1e1e2e
+        statusline #cdd6f4
+        separator  #313244
+
+        #                      border   bg       text
+        focused_workspace  #89b4fa #89b4fa #1e1e2e
+        active_workspace   #313244 #313244 #cdd6f4
+        inactive_workspace #1e1e2e #1e1e2e #6c7086
+        urgent_workspace   #f38ba8 #f38ba8 #1e1e2e
+        binding_mode       #cba6f7 #cba6f7 #1e1e2e
+    }
+}

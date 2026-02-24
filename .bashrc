@@ -8,8 +8,11 @@ fi
 # ----------------------------------------
 # PATH adjustments
 # ----------------------------------------
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+CUSTOM_PATHS="$HOME/.local/share/nvm/v25.6.1/bin:$HOME/.local/opt/lua-lsp/bin:$HOME/.luarocks/lib/luarocks/rocks-5.1/lua-language-server/3.15.0-1/bin:$HOME/.luarocks/bin:$HOME/go/bin:$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/bin"
+
+# Only prepend if not already in PATH
+if ! [[ "$PATH" =~ "$CUSTOM_PATHS" ]]; then
+    PATH="$CUSTOM_PATHS:$PATH"
 fi
 export PATH
 
@@ -38,3 +41,5 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
+
+eval "$(starship init bash)"

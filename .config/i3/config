@@ -8,13 +8,13 @@ font pango:JetBrains Mono 11
 floating_modifier $mod
 
 # --- No decorations ---
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 1
+default_floating_border pixel 1
 hide_edge_borders smart
 
 # --- Gaps ---
-gaps inner 5
-gaps outer 3
+gaps inner 3
+gaps outer 2
 smart_gaps on
 smart_borders on
 
@@ -153,27 +153,30 @@ bindsym $mod+r mode "resize"
 # ============================================================
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
-exec --no-startup-id xset r rate 200 60
+exec --no-startup-id xset r rate 200 20
 exec --no-startup-id feh --bg-fill ~/wallpapers/aurora_boreal.png
 
 # ============================================================
 #  Bar
 # ============================================================
-bar {
-    position top
-    status_command i3status
-    tray_padding 4
 
-    colors {
-        background #1e1e2e
-        statusline #cdd6f4
-        separator  #313244
+exec_always --no-startup-id ~/dotfiles/.config/polybar/launch.sh
 
-        #                      border   bg       text
-        focused_workspace  #89b4fa #89b4fa #1e1e2e
-        active_workspace   #313244 #313244 #cdd6f4
-        inactive_workspace #1e1e2e #1e1e2e #6c7086
-        urgent_workspace   #f38ba8 #f38ba8 #1e1e2e
-        binding_mode       #cba6f7 #cba6f7 #1e1e2e
-    }
-}
+# bar {
+#     position top
+#     status_command i3status
+#     tray_padding 4
+#
+#     colors {
+#         background #1e1e2e
+#         statusline #cdd6f4
+#         separator  #313244
+#
+#         #                      border   bg       text
+#         focused_workspace  #89b4fa #89b4fa #1e1e2e
+#         active_workspace   #313244 #313244 #cdd6f4
+#         inactive_workspace #1e1e2e #1e1e2e #6c7086
+#         urgent_workspace   #f38ba8 #f38ba8 #1e1e2e
+#         binding_mode       #cba6f7 #cba6f7 #1e1e2e
+#     }
+# }

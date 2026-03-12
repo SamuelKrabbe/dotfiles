@@ -4,7 +4,7 @@
 
 * {
   font-family: JetBrainsMono Nerd Font Propo;
-  font-size: 17px;
+  font-size: 12px;
   padding: 0;
   margin: 0;
 }
@@ -32,6 +32,7 @@
 #idle_inhibitor,
 #network,
 #bluetooth,
+#battery,
 #tray {
   padding-right: 1em
 }

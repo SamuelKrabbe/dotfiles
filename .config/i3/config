@@ -60,13 +60,7 @@ bindsym $mod+e exec xdg-open ~
 #     -fn 'JetBrains Mono-11'
 
 # New Rofi with icons
-bindsym $mod+a exec rofi -show drun \
-    -theme-str "window {background: #1e1e2e; border-radius: 5px;} \
-                mainbox {background: #1e1e2e;} \
-                listview {lines: 12;} \
-                element {padding: 5px;} \
-                element-icon {size: 16px;} \
-                selected {background: #89b4fa; color: #1e1e2e;}" 
+bindsym $mod+a exec sh -c '~/.config/rofi/launchers/type-2/launcher.sh || pkill rofi'
 
 # Focus (vim + arrows)
 bindsym $mod+h focus left

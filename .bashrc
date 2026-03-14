@@ -43,3 +43,5 @@ fi
 unset rc
 
 eval "$(starship init bash)"
+export GOTOOLCHAIN=local
+export PATH=$PATH:/usr/local/go/bin

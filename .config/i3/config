@@ -49,13 +49,24 @@ client.placeholder      $base     $base     $text     $base     $base
 #  Keybindings
 # ============================================================
 
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec gnome-terminal
 bindsym $mod+b exec firefox
 bindsym $mod+e exec xdg-open ~
-bindsym $mod+d exec dmenu_run -i \
-    -nb '#1e1e2e' -nf '#a6adc8' \
-    -sb '#89b4fa' -sf '#1e1e2e' \
-    -fn 'JetBrains Mono-11'
+
+# Old dmenu
+# bindsym $mod+a exec dmenu_run -i \
+#     -nb '#1e1e2e' -nf '#a6adc8' \
+#     -sb '#89b4fa' -sf '#1e1e2e' \
+#     -fn 'JetBrains Mono-11'
+
+# New Rofi with icons
+bindsym $mod+a exec rofi -show drun \
+    -theme-str "window {background: #1e1e2e; border-radius: 5px;} \
+                mainbox {background: #1e1e2e;} \
+                listview {lines: 12;} \
+                element {padding: 5px;} \
+                element-icon {size: 16px;} \
+                selected {background: #89b4fa; color: #1e1e2e;}" 
 
 # Focus (vim + arrows)
 bindsym $mod+h focus left
